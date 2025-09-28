@@ -1,3 +1,13 @@
+/* Keyframes for the product slider on products.html */
+@keyframes productSlide {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%); /* We move 50% because the slides are cloned, creating a total width of 200% */
+    }
+}
+
 /* For the testimonials slider */
 .slider-container {
     width: 80%;

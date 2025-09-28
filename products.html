@@ -385,15 +385,6 @@
             </div> 
         </section> 
 
-        <!-- Recently Viewed Section -->
-        <section id="recently-viewed-section" class="py-16 bg-green-100 hidden">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Recently Viewed Items</h2>
-                <div id="recently-viewed-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-                    <!-- Recently viewed items will be injected here -->
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer Section -->
@@ -710,18 +701,6 @@
             }).join('');
         }
 
-        function addRecentlyViewedItemFromCard(card) {
-            const product = {
-                id: card.dataset.productId,
-                name: card.dataset.productName,
-                price: parseFloat(card.dataset.productPrice),
-                image: card.dataset.productImage,
-                pageUrl: window.location.pathname,
-                productId: card.id
-            };
-            addRecentlyViewedItem(product);
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
@@ -755,7 +734,8 @@
 
                 // Calculate animation duration
                 const originalSlideCount = featuredProducts.length;
-                const animationDuration = originalSlideCount * 5; // 5 seconds per slide
+                const secondsPerSlide = 3; // <-- ADJUST SPEED HERE. Lower number = faster scroll.
+                const animationDuration = originalSlideCount * secondsPerSlide;
 
                 // Apply animation
                 featuredSlider.style.animation = `productSlide ${animationDuration}s linear infinite`;
@@ -825,7 +805,7 @@
                             image: card.dataset.productImage
                         }, parseInt(qty));
                     }
-                    addRecentlyViewedItemFromCard(card);
+                    // addRecentlyViewedItemFromCard(card); // Removed recently viewed functionality
                 });
             }
         });
@@ -836,7 +816,6 @@
     <script src="header.js"></script>
     <script src="slider.js"></script>
     <script src="cart.js"></script>
-    <script src="recentlyViewed.js"></script>
     <script src="main.js"></script>
 
 </body>
