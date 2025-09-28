@@ -1,0 +1,85 @@
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.75rem; /* 12px */
+    max-width: 56rem; /* 896px */
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
+    color: #6b7280; /* gray-500 */
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.modal-close-button:hover {
+    color: #111827; /* gray-900 */
+}
+
+.modal-title {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body h3 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.modal-body ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Toast Notification styles */
+.toast-notification {
+    position: fixed;
+    top: 5rem; /* 80px */
+    right: 1.25rem; /* 20px */
+    background-color: #22c55e; /* green-500 */
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateX(calc(100% + 1.25rem));
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+}

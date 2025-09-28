@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Sunrise Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="filter.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Styles for the featured product slider */
+        #products .slider-container .slide {
+            flex: 0 0 25%; /* Show 4 slides at a time on larger screens */
+            max-width: 25%;
+            padding: 0 1rem;
+        }
+        #products .slide-image {
+            width: 100%;
+            height: 200px; /* Give a fixed height */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+            border-radius: 1rem; /* Rounded corners */
+        }
+        #products .slide-caption {
+            text-align: center;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+        .quantity-input-sm {
+            width: 60px;
+            text-align: center;
+        }
+        
+        /* Enhanced product card styles */
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: linear-gradient(145deg, #ffffff 0%, #f8fffe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #10b981, #059669, #047857);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        
+        .product-card .quantity-input-sm {
+            width: 50px;
+            height: 36px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .product-card .quantity-input-sm:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        /* Improved button styles */
+        .add-to-cart-btn {
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .add-to-cart-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .add-to-cart-btn:hover::before {
+            left: 100%;
+        }
+        
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .add-to-cart-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Filter button enhancements */
+        .filter-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Slider enhancements */
+        .slider-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Grid improvements */
+        #product-grid {
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            #product-grid {
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Loading animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .product-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+        }
+    </style>
+</head>
+<body class="bg-green-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-green-600 via-green-500 to-emerald-600 text-white shadow-xl sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-4"><img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-16 w-16 border-0 rounded-full"><h1 class="text-5xl font-bold tracking-tight">Sunrise Farm</h1></a>
+            </div>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center space-x-6 text-lg font-medium text-black">
+                    <li><a href="index.html#animals" class="hover:text-gray-700 transition-colors duration-300">Our Family</a></li>                    
+                    <li><a href="products.html" class="hover:text-gray-700 transition-colors duration-300">Products</a></li>
+                    <li class="relative" id="more-dropdown-container">
+                        <a href="#" id="more-dropdown-button" class="hover:text-gray-700 transition-colors duration-300">More <i class="fas fa-chevron-down text-sm"></i></a>
+                        <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
+                            <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
+                            <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
+                            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="#" id="search-icon" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-search"></i></a>
+                        <!-- Search Dropdown -->
+                        <div id="search-overlay" class="hidden absolute top-full right-0 mt-2 z-50">
+                            <div class="bg-white p-4 rounded-lg shadow-xl w-64 md:w-80">
+                                <button id="close-search" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+                                <h3 class="text-2xl font-bold mb-4">Search the Farm</h3>
+                                <form id="search-form">
+                                    <input type="text" id="search-input" class="w-full px-4 py-2 border rounded-lg" placeholder="e.g. 'duck eggs'">
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="cart.html" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-shopping-cart"></i><span id="cart-item-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <main>
+        <section id="products" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-gradient-to-r from-green-100 to-emerald-100 px-6 py-2 rounded-full mb-6">
+                        <span class="text-green-700 font-semibold text-sm uppercase tracking-wider">✨ Premium Quality</span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 mb-6 leading-tight">
+                        Our Farm Products
+                    </h2>
+                    <p class="text-xl text-gray-700 mb-8 max-w-4xl mx-auto leading-relaxed font-medium">
+                        Fresh, organic, and locally sourced products from our sustainable farm. Every item is carefully selected and harvested with love and care.
+                    </p>
+                    <div class="flex justify-center items-center space-x-8 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-leaf text-green-500 mr-2"></i>
+                            <span>100% Organic</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-heart text-red-500 mr-2"></i>
+                            <span>Farm Fresh</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-truck text-blue-500 mr-2"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Page Search Bar -->
+                <div class="max-w-2xl mx-auto mb-12">
+                    <div class="relative">
+                        <label for="product-page-search-input" class="sr-only">Search Products</label>
+                        <input type="text" id="product-page-search-input" placeholder="Search for products..." class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-full shadow-sm focus:ring-green-500 focus:border-green-500">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Featured Products Slider -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Products</h3>
+                    <p class="text-center text-gray-600">Our most popular and seasonal items are highlighted here. Check out what's fresh from the farm!</p>
+                </div>
+
+                <!-- Product Filter Section -->
+                <div class="text-center mb-16">
+                    <div class="inline-block bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Filter Products</h3>
+                        <div id="product-filters" class="flex flex-wrap justify-center gap-3">
+                            <button class="filter-btn active px-6 py-3 bg-green-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300" data-filter="all">
+                                <i class="fas fa-th-large mr-2"></i>All Products
+                            </button>
+                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="dairy-eggs">
+                                <i class="fas fa-egg mr-2"></i>Dairy & Eggs
+                            </button>
+                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="meat">
+                                <i class="fas fa-bacon mr-2"></i>Meat
+                            </button>
+                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="fish">
+                                <i class="fas fa-fish mr-2"></i>Fish
+                            </button>
+                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="livestock">
+                                <i class="fas fa-paw mr-2"></i>Livestock
+                            </button>
+                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="bee-products">
+                                <i class="fas fa-spa mr-2"></i>Bee Products
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Products will be dynamically generated here by JavaScript -->
+                </div>
+            </div> 
+        </section> 
+
+        <!-- Recently Viewed Section -->
+        <section id="recently-viewed-section" class="py-16 bg-green-100 hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Recently Viewed Items</h2>
+                <div id="recently-viewed-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                    <!-- Recently viewed items will be injected here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-4 mb-4">
+                        <img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-12 w-12 border-0 rounded-full">
+                        <h3 class="text-xl font-bold text-green-400">Sunrise Farm</h3>
+                    </div>
+                    <p class="text-gray-400">Sustainable farming with love and care for our animal family.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Our Products</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p class="mb-4 md:mb-0">&copy; 2024 Sunrise Farm. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" data-modal-trigger="terms" class="hover:text-white">Terms of Service</a>
+                    <a href="#" data-modal-trigger="privacy" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" data-modal-trigger="cookie" class="hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="toast-notification">
+        <!-- Message will be injected here -->
+    </div>
+
+    <!-- Legal Modal -->
+    <div id="legal-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="legal-modal-close" class="modal-close-button">&times;</button>
+            <h2 id="legal-modal-title" class="modal-title"></h2>
+            <div id="legal-modal-body" class="modal-body">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="to-top-button" title="Go To Top"
+        class="fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-green-500 hover:bg-green-600 text-white text-lg font-semibold transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 'fresh-eggs',
+                name: 'Fresh Eggs',
+                price: 500,
+                image: 'images/chicken eggs.jpg',
+                category: 'dairy-eggs',
+                description: 'Farm-fresh eggs from our free-range chickens. Perfect for a healthy breakfast.',
+                unit: 'tray'
+            },
+            {
+                id: 'duck-eggs',
+                name: 'Duck Eggs',
+                price: 600,
+                image: 'images/duck eggs.jpg',
+                category: 'dairy-eggs',
+                description: 'Rich and delicious eggs from our pasture-raised ducks, great for baking.',
+                unit: 'tray'
+            },
+            {
+                id: 'goat-cheese',
+                name: 'Goat Cheese',
+                price: 800,
+                image: 'images/goat cheese.jpg',
+                category: 'dairy-eggs',
+                description: 'Creamy and tangy goat cheese, handcrafted from our happy goats\' milk.',
+                unit: 'kg'
+            },
+            {
+                id: 'fresh-milk',
+                name: 'Fresh Milk',
+                price: 150,
+                image: 'images/fresh milk.jpg',
+                category: 'dairy-eggs',
+                description: 'Pure, fresh milk from our grass-fed cows, delivered daily.',
+                unit: 'liter'
+            },
+            {
+                id: 'beef',
+                name: 'Beef',
+                price: 1200,
+                image: 'images/beef.jpg',
+                category: 'meat',
+                description: 'High-quality, grass-fed beef from our healthy cattle.',
+                unit: 'kg'
+            },
+            {
+                id: 'mutton',
+                name: 'Mutton',
+                price: 1000,
+                image: 'images/mutton.jpg',
+                category: 'meat',
+                description: 'Tender and flavorful mutton from our pasture-raised sheep.',
+                unit: 'kg'
+            },
+            {
+                id: 'chevon',
+                name: 'Chevon',
+                price: 900,
+                image: 'images/chevon.jpeg',
+                category: 'meat',
+                description: 'Lean and healthy goat meat from our free-range goats.',
+                unit: 'kg'
+            },
+            {
+                id: 'dressed-broiler',
+                name: 'Dressed Broiler',
+                price: 800,
+                image: 'images/dressed broiler.webp',
+                category: 'meat',
+                description: 'Fresh, dressed broiler chicken, ready for cooking.',
+                unit: 'kg'
+            },
+            {
+                id: 'dressed-duck',
+                name: 'Dressed Duck',
+                price: 1200,
+                image: 'images/dressed duck.jpg',
+                category: 'meat',
+                description: 'Premium dressed duck, perfect for special occasions.',
+                unit: 'kg'
+            },
+            {
+                id: 'dressed-rabbit',
+                name: 'Dressed Rabbit',
+                price: 1000,
+                image: 'images/dressed rabbit.webp',
+                category: 'meat',
+                description: 'Lean and tender dressed rabbit meat.',
+                unit: 'kg'
+            },
+            {
+                id: 'dressed-geese',
+                name: 'Dressed Geese',
+                price: 1500,
+                image: 'images/dressed geese.webp',
+                category: 'meat',
+                description: 'Premium dressed geese, ideal for festive meals.',
+                unit: 'kg'
+            },
+            {
+                id: 'dressed-fish-fillet',
+                name: 'Fish Fillet',
+                price: 600,
+                image: 'images/dressed fillet.jpg',
+                category: 'fish',
+                description: 'Fresh fish fillets from our clean pond water.',
+                unit: 'kg'
+            },
+            {
+                id: 'goats',
+                name: 'Goats',
+                price: 0,
+                image: 'images/goats.jpg',
+                category: 'livestock',
+                description: 'Playful and productive Nigerian Dwarf and Boer goats.',
+                unit: 'contact'
+            },
+            {
+                id: 'rabbits',
+                name: 'Rabbits',
+                price: 0,
+                image: 'images/rabbit.jpg',
+                category: 'livestock',
+                description: 'Gentle and charming New Zealand, Californian, and Mini Lop rabbits.',
+                unit: 'contact'
+            },
+            {
+                id: 'live-chicken',
+                name: 'Live Chicken',
+                price: 0,
+                image: 'images/chickens.jpg',
+                category: 'livestock',
+                description: 'Healthy, free-range chickens perfect for your backyard.',
+                unit: 'contact'
+            },
+            {
+                id: 'ducks',
+                name: 'Ducks',
+                price: 0,
+                image: 'images/ducks.jpg',
+                category: 'livestock',
+                description: 'Beautiful and productive ducks for eggs and meat.',
+                unit: 'contact'
+            },
+            {
+                id: 'geese',
+                name: 'Geese',
+                price: 0,
+                image: 'images/geese.jpg',
+                category: 'livestock',
+                description: 'Majestic geese that are excellent for pest control and eggs.',
+                unit: 'contact'
+            },
+            {
+                id: 'turkey',
+                name: 'Turkey',
+                price: 0,
+                image: 'images/turkey.jpg',
+                category: 'livestock',
+                description: 'Large, healthy turkeys perfect for special occasions.',
+                unit: 'contact'
+            },
+            {
+                id: 'sheep',
+                name: 'Sheep',
+                price: 0,
+                image: 'images/sheep.webp',
+                category: 'livestock',
+                description: 'Grass-fed sheep for wool and meat production.',
+                unit: 'contact'
+            },
+            {
+                id: 'bulls',
+                name: 'Bulls & Cattle',
+                price: 0,
+                image: 'images/bulls and heifers.jpg',
+                category: 'livestock',
+                description: 'Strong, healthy bulls and cattle for breeding and meat.',
+                unit: 'contact'
+            }
+            ,
+            {
+                id: 'raw-honey',
+                name: 'Raw Honey',
+                price: 750,
+                image: 'images/honey.jpg',
+                category: 'bee-products',
+                description: 'Pure, raw honey from our hardworking bees, full of natural goodness.',
+                unit: 'jar'
+            },
+            {
+                id: 'beeswax',
+                name: 'Beeswax',
+                price: 500,
+                image: 'images/bee wax.jpg',
+                category: 'bee-products',
+                description: 'Natural beeswax for crafts, candles, and cosmetics.',
+                unit: 'block'
+            }
+        ];
+
+        // Render products
+        function renderProducts(filter = 'all') {
+            const productGrid = document.getElementById('product-grid');
+            const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            productGrid.innerHTML = filteredProducts.map(product => {
+                const isLivestock = product.category === 'livestock';
+                const priceSection = isLivestock ? 
+                    '<span class="text-lg font-bold text-gray-600">Contact for Prices</span>' :
+                    `<span class="text-xl font-bold text-gray-800">Ksh ${product.price.toFixed(2)}</span>
+                     <span class="text-sm text-gray-500">/ ${product.unit}</span>`;
+                
+                const actionSection = isLivestock ?
+                    `<a href="contact.html" class="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
+                        <i class="fas fa-phone mr-2"></i>Contact for Prices
+                     </a>` :
+                    `<div class="flex items-center gap-3">
+                        <label for="qty-${product.id}" class="text-sm font-medium text-gray-700">Qty:</label>
+                        <input type="number" id="qty-${product.id}" value="1" min="1" max="10" class="quantity-input-sm border border-gray-300 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-green-500 focus:border-green-500" onclick="event.stopPropagation()">
+                        <button onclick="event.stopPropagation(); const qty = document.getElementById('qty-${product.id}').value; addToCart({id: '${product.id}', name: '${product.name}', price: ${product.price}, image: '${product.image}'}, parseInt(qty) || 1)" class="flex-1 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                        </button>
+                     </div>`;
+
+                return `
+                    <div id="product-${product.id}"
+                         class="product-card bg-white rounded-3xl shadow-xl flex flex-col overflow-hidden group hover:shadow-2xl transition-shadow duration-300" 
+                         data-category="${product.category}"
+                         data-product-id="${product.id}"
+                         data-product-name="${product.name}"
+                         data-product-price="${product.price}"
+                         data-product-image="${product.image}">
+                        <div class="relative overflow-hidden">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">${product.name}</h3>
+                            <p class="text-gray-600 mb-4 flex-grow leading-relaxed">${product.description}</p>
+                            <div class="flex flex-col gap-3 mt-auto">
+                                <div class="flex justify-between items-center">
+                                    ${priceSection}
+                                </div>
+                                ${actionSection}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addRecentlyViewedItemFromCard(card) {
+            const product = {
+                id: card.dataset.productId,
+                name: card.dataset.productName,
+                price: parseFloat(card.dataset.productPrice),
+                image: card.dataset.productImage,
+                pageUrl: window.location.pathname,
+                productId: card.id
+            };
+            addRecentlyViewedItem(product);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-green-700', 'text-white');
+                        btn.classList.add('bg-white/90', 'text-gray-700');
+                    });
+                    button.classList.add('active', 'bg-green-700', 'text-white');
+                    button.classList.remove('bg-white/90', 'text-gray-700');
+
+                    const filter = button.dataset.filter;
+                    renderProducts(filter);
+                });
+            });
+
+            // --- Live Product Search Logic ---
+            const productPageSearchInput = document.getElementById('product-page-search-input');
+            if (productPageSearchInput) {
+                productPageSearchInput.addEventListener('input', () => {
+                    const query = productPageSearchInput.value.trim().toLowerCase();
+
+                    // Reset category filters when searching
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-green-700', 'text-white');
+                        btn.classList.add('bg-white/90', 'text-gray-700');
+                        if (btn.dataset.filter === 'all') {
+                            btn.classList.add('active', 'bg-green-700', 'text-white');
+                            btn.classList.remove('bg-white/90', 'text-gray-700');
+                        }
+                    });
+
+                    const productCards = document.querySelectorAll('#product-grid .product-card');
+                    productCards.forEach(card => {
+                        const title = card.dataset.productName?.toLowerCase() || '';
+                        const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+                        const isVisible = title.includes(query) || description.includes(query);
+
+                        if (isVisible) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // --- Recently Viewed Items Logic ---
+            const productGrid = document.getElementById('product-grid');
+            if (productGrid) {
+                productGrid.addEventListener('click', (e) => {
+                    const card = e.target.closest('.product-card');
+                    if (!card || e.target.closest('button') || e.target.closest('a') || e.target.closest('input')) {
+                        return;
+                    }
+                    // Add to cart if it's a purchasable item
+                    if (card.dataset.category !== 'livestock') {
+                        const qty = card.querySelector('input[type="number"]')?.value || 1;
+                        addToCart({
+                            id: card.dataset.productId,
+                            name: card.dataset.productName,
+                            price: parseFloat(card.dataset.productPrice),
+                            image: card.dataset.productImage
+                        }, parseInt(qty));
+                    }
+                    addRecentlyViewedItemFromCard(card);
+                });
+            }
+        });
+    </script>
+    
+    <script src="search.js"></script>
+    <script src="modal.js"></script>
+    <script src="header.js"></script>
+    <script src="slider.js"></script>
+    <script src="cart.js"></script>
+    <script src="recentlyViewed.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

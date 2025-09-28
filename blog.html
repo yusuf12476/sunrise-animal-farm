@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm News - Sunrise Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="modal.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Lato:wght@400;700&display=swap');
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0fdf4; /* Corresponds to green-50 */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+        }
+    </style>
+</head>
+<body class="bg-green-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-green-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-4"><img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-16 w-16 border-0 rounded-full"><h1 class="text-5xl font-bold tracking-tight">Sunrise Farm</h1></a>
+            </div>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center space-x-6 text-lg font-medium text-black">
+                    <li><a href="index.html#animals" class="hover:text-gray-700 transition-colors duration-300">Our Family</a></li>                    
+                    <li><a href="products.html" class="hover:text-gray-700 transition-colors duration-300">Products</a></li>
+                    <li class="relative" id="more-dropdown-container">
+                        <a href="#" id="more-dropdown-button" class="hover:text-gray-700 transition-colors duration-300">More <i class="fas fa-chevron-down text-sm"></i></a>
+                        <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
+                            <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
+                            <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
+                            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="#" id="search-icon" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-search"></i></a>
+                        <!-- Search Dropdown -->
+                        <div id="search-overlay" class="hidden absolute top-full right-0 mt-2 z-50">
+                            <div class="bg-white p-4 rounded-lg shadow-xl w-64 md:w-80">
+                                <button id="close-search" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+                                <h3 class="text-2xl font-bold mb-4">Search the Farm</h3>
+                                <form id="search-form">
+                                    <input type="text" id="search-input" class="w-full px-4 py-2 border rounded-lg" placeholder="e.g. 'duck eggs'">
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="cart.html" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-shopping-cart"></i><span id="cart-item-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="blog" class="py-16">
+            <div class="container mx-auto px-4">
+                <!-- Farm Calendar Section -->
+                <section id="farm-calendar" class="py-16 bg-green-100">
+                    <div class="container mx-auto px-4">
+                        <div class="text-center mb-12">
+                            <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Farm Calendar</h2>
+                            <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Stay up-to-date with all the exciting events and seasonal happenings at Sunrise Farm. There's always something to see and do!</p>
+                        </div>
+        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <!-- Calendar Card 1 -->
+                            <div class="bg-white p-6 rounded-3xl shadow-xl flex flex-col text-center items-center">
+                                <div class="bg-green-500 text-white rounded-lg px-6 py-3 mb-4">
+                                    <p class="text-5xl font-bold">10</p>
+                                    <p class="font-semibold text-xl">AUG</p>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Goat Milking & Cheese Making Workshop</h3>
+                                <p class="text-gray-500 my-2"><i class="fas fa-clock mr-2"></i>10:00 AM - 1:00 PM</p>
+                                <p class="text-gray-700 leading-relaxed text-sm">A hands-on experience milking our friendly goats and crafting your own fresh cheese. A delicious and educational event for all ages.</p>
+                            </div>
+        
+                            <!-- Calendar Card 2 -->
+                            <div class="bg-white p-6 rounded-3xl shadow-xl flex flex-col text-center items-center">
+                                <div class="bg-green-500 text-white rounded-lg px-6 py-3 mb-4">
+                                    <p class="text-5xl font-bold">24</p>
+                                    <p class="font-semibold text-xl">AUG</p>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Pasture Walk & Farming Tour</h3>
+                                <p class="text-gray-500 my-2"><i class="fas fa-clock mr-2"></i>2:00 PM - 3:30 PM</p>
+                                <p class="text-gray-700 leading-relaxed text-sm">Join our farm manager for a guided tour to learn about our rotational grazing practices and commitment to soil health. Wear walking shoes!</p>
+                            </div>
+        
+                            <!-- Calendar Card 3 -->
+                            <div class="bg-white p-6 rounded-3xl shadow-xl flex flex-col text-center items-center">
+                                <div class="bg-green-500 text-white rounded-lg px-6 py-3 mb-4">
+                                    <p class="text-5xl font-bold">14</p>
+                                    <p class="font-semibold text-xl">SEP</p>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Family Farm Day</h3>
+                                <p class="text-gray-500 my-2"><i class="fas fa-clock mr-2"></i>11:00 AM - 4:00 PM</p>
+                                <p class="text-gray-700 leading-relaxed text-sm">Bring the whole family for a day of fun! Enjoy hayrides, a petting zoo, face painting, and fresh food from the farm kitchen.</p>
+                            </div>
+        
+                            <!-- Calendar Card 4 -->
+                            <div class="bg-white p-6 rounded-3xl shadow-xl flex flex-col text-center items-center">
+                                <div class="bg-green-500 text-white rounded-lg px-6 py-3 mb-4">
+                                    <p class="text-5xl font-bold">12</p>
+                                    <p class="font-semibold text-xl">OCT</p>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800">Annual Harvest Festival</h3>
+                                <p class="text-gray-500 my-2"><i class="fas fa-clock mr-2"></i>10:00 AM - 5:00 PM</p>
+                                <p class="text-gray-700 leading-relaxed text-sm">Celebrate the season with us! Pick your own pumpkins, navigate our corn maze, enjoy live music, and sample delicious seasonal treats.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="text-center mb-12 pt-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Farm News</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">The latest stories and updates from life at Sunrise Farm.</p>
+                </div>
+
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                    <!-- Blog Post Card 1 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="https://placehold.co/600x400/a5a58d/ffffff?text=New+Arrivals" alt="Placeholder image for new arrivals" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <p class="text-gray-500 text-sm mb-2">FARM LIFE | <time datetime="2024-07-20">July 20, 2024</time></p>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-3">Spring on the Farm: Welcoming New Arrivals</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Spring is a busy and exciting time at Sunrise Farm. Join us as we introduce the newest, fluffiest members of our farm family and share what's happening in the pastures this season.</p>
+                        <span class="font-semibold text-gray-400 mt-auto">Coming Soon</span>
+                    </div>
+
+                    <!-- Blog Post Card 2 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="https://placehold.co/600x400/6a994e/ffffff?text=Pasture+Health" alt="Placeholder image for pasture health" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <p class="text-gray-500 text-sm mb-2">SUSTAINABILITY | <time datetime="2024-07-15">July 15, 2024</time></p>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-3">The Secret to Healthy Pastures: Rotational Grazing</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Learn about our commitment to sustainable agriculture and how rotational grazing benefits our animals, the land, and the quality of our products.</p>
+                        <span class="font-semibold text-gray-400 mt-auto">Coming Soon</span>
+                    </div>
+
+                    <!-- Blog Post Card 3 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="https://placehold.co/600x400/b7b7a4/ffffff?text=Community+Day" alt="Placeholder image for community day" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <p class="text-gray-500 text-sm mb-2">COMMUNITY | <time datetime="2024-07-05">July 05, 2024</time></p>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-3">A Recap of Our Annual Farm Day</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Thank you to everyone who joined us for a fun-filled day of tours, games, and delicious food. See the highlights and smiling faces from our favorite community event of the year!</p>
+                        <span class="font-semibold text-gray-400 mt-auto">Coming Soon</span>
+                    </div>
+
+                    <!-- Blog Post Card 4 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="https://placehold.co/600x400/a5a58d/ffffff?text=Goat+Antics" alt="Placeholder image for goat antics" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <p class="text-gray-500 text-sm mb-2">FARM LIFE | <time datetime="2024-06-28">June 28, 2024</time></p>
+                        <h3 class="text-3xl font-bold text-gray-800 mb-3">The Playful Personalities of Our Goats</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Spend a moment with the most mischievous members of our farm family. Learn about the unique personalities of our Nigerian Dwarf and Boer goats and why they're a visitor favorite.</p>
+                        <span class="font-semibold text-gray-400 mt-auto">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-4 mb-4">
+                        <img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-12 w-12 border-0 rounded-full">
+                        <h3 class="text-xl font-bold text-green-400">Sunrise Farm</h3>
+                    </div>
+                    <p class="text-gray-400">Sustainable farming with love and care for our animal family.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="index.html#animals" class="text-gray-400 hover:text-white">Our Family</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Our Products</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4"><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook-f"></i></a><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a></div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p class="mb-4 md:mb-0">&copy; 2024 Sunrise Farm. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" data-modal-trigger="terms" class="hover:text-white">Terms of Service</a>
+                    <a href="#" data-modal-trigger="privacy" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" data-modal-trigger="cookie" class="hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal -->
+    <div id="legal-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="legal-modal-close" class="modal-close-button">&times;</button>
+            <h2 id="legal-modal-title" class="modal-title"></h2>
+            <div id="legal-modal-body" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="to-top-button" title="Go To Top"
+        class="fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-green-500 hover:bg-green-600 text-white text-lg font-semibold transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="search.js"></script>
+    <script src="modal.js"></script>
+    <script src="header.js"></script>
+    <script src="dropdown.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

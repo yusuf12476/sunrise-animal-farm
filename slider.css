@@ -1,0 +1,37 @@
+/* For the testimonials slider */
+.slider-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    /* The animation will be set by slider.js */
+}
+
+.slide {
+    flex: 0 0 100%; /* Each slide takes full width of the container */
+    box-sizing: border-box;
+    padding: 2rem;
+    text-align: center;
+}
+
+.slide .quote-icon {
+    font-size: 2rem;
+    color: #86efac; /* green-300 */
+    margin-bottom: 1rem;
+}
+
+.slide .quote-text {
+    font-style: italic;
+    color: #374151; /* gray-700 */
+    margin-bottom: 1rem;
+    font-size: 1.125rem; /* text-lg */
+}
+
+.slide .quote-author {
+    font-weight: 700;
+    color: #1f2937; /* gray-800 */
+}

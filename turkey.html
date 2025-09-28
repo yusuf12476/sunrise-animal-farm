@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Turkeys - Sunrise Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="modal.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Lato:wght@400;700&display=swap');
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0fdf4; /* Corresponds to green-50 */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+        }
+    </style>
+</head>
+<body class="bg-green-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-green-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-4"><img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-16 w-16 border-0 rounded-full"><h1 class="text-5xl font-bold tracking-tight">Sunrise Farm</h1></a>
+            </div>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center space-x-6 text-lg font-medium text-black">
+                    <li><a href="index.html#animals" class="hover:text-gray-700 transition-colors duration-300">Our Family</a></li>                    
+                    <li><a href="products.html" class="hover:text-gray-700 transition-colors duration-300">Products</a></li>
+                    <li class="relative" id="more-dropdown-container">
+                        <a href="#" id="more-dropdown-button" class="hover:text-gray-700 transition-colors duration-300">More <i class="fas fa-chevron-down text-sm"></i></a>
+                        <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
+                            <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
+                            <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
+                            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="#" id="search-icon" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-search"></i></a>
+                        <!-- Search Dropdown -->
+                        <div id="search-overlay" class="hidden absolute top-full right-0 mt-2 z-50">
+                            <div class="bg-white p-4 rounded-lg shadow-xl w-64 md:w-80">
+                                <button id="close-search" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+                                <h3 class="text-2xl font-bold mb-4">Search the Farm</h3>
+                                <form id="search-form">
+                                    <input type="text" id="search-input" class="w-full px-4 py-2 border rounded-lg" placeholder="e.g. 'duck eggs'">
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="cart.html" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-shopping-cart"></i><span id="cart-item-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-8">Our Turkeys</h2>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <img src="images/turkey.jpg" alt="A turkey with its feathers displayed" class="rounded-2xl shadow-lg w-full h-auto">
+                        </div>
+                        <div class="text-lg text-gray-700 leading-relaxed space-y-6">
+                            <p>With their proud strut and impressive plumage, our turkeys are a magnificent sight. They are social, intelligent birds that enjoy foraging in our pastures. We raise heritage breeds, which are known for their robust health and flavorful meat.</p>
+                            <h3 class="text-2xl font-semibold text-gray-800 pt-4">Breeds on Our Farm:</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Bourbon Red:</strong> A beautiful heritage breed known for its rich, dark red feathers and excellent flavor. They are active foragers and have a calm disposition.</li>
+                                <li><strong>Narragansett:</strong> One of America's oldest turkey breeds, the Narragansett is known for its striking gray, black, tan, and white feathers. They are excellent mothers and have a good temperament.</li>
+                            </ul>
+                            <p>Our turkeys are raised on pasture, where they can roam and eat a natural diet of grasses and insects, supplemented with quality grain. This method of raising them not only is more humane but also results in a superior, more flavorful product for your holiday table.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-4 mb-4">
+                        <img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-12 w-12 border-0 rounded-full">
+                        <h3 class="text-xl font-bold text-green-400">Sunrise Farm</h3>
+                    </div>
+                    <p class="text-gray-400">Sustainable farming with love and care for our animal family.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="index.html#animals" class="text-gray-400 hover:text-white">Our Family</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Our Products</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4"><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook-f"></i></a><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a></div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p class="mb-4 md:mb-0">&copy; 2024 Sunrise Farm. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" data-modal-trigger="terms" class="hover:text-white">Terms of Service</a>
+                    <a href="#" data-modal-trigger="privacy" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" data-modal-trigger="cookie" class="hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal -->
+    <div id="legal-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="legal-modal-close" class="modal-close-button">&times;</button>
+            <h2 id="legal-modal-title" class="modal-title"></h2>
+            <div id="legal-modal-body" class="modal-body">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="to-top-button" title="Go To Top"
+        class="fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-green-500 hover:bg-green-600 text-white text-lg font-semibold transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="search.js"></script>
+    <script src="modal.js"></script>
+    <script src="header.js"></script>
+    <script src="dropdown.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

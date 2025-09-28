@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sunrise Farm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="modal.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Lato:wght@400;700&display=swap');
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0fdf4; /* Corresponds to green-50 */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+        }
+        /* Flip Card Styles */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.5rem; /* rounded-3xl */
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        /* Timeline Animation Styles */
+        .timeline-element {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .timeline-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-green-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-green-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="flex items-center space-x-4"><img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-16 w-16 border-0 rounded-full"><h1 class="text-5xl font-bold tracking-tight">Sunrise Farm</h1></a>
+            </div>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-wrap justify-center space-x-6 text-lg font-medium text-black">
+                    <li><a href="index.html#animals" class="hover:text-gray-700 transition-colors duration-300">Our Family</a></li>                    
+                    <li><a href="products.html" class="hover:text-gray-700 transition-colors duration-300">Products</a></li>
+                    <li class="relative" id="more-dropdown-container">
+                        <a href="#" id="more-dropdown-button" class="hover:text-gray-700 transition-colors duration-300">More <i class="fas fa-chevron-down text-sm"></i></a>
+                        <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
+                            <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
+                            <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
+                            <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="#" id="search-icon" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-search"></i></a>
+                        <!-- Search Dropdown -->
+                        <div id="search-overlay" class="hidden absolute top-full right-0 mt-2 z-50">
+                            <div class="bg-white p-4 rounded-lg shadow-xl w-64 md:w-80">
+                                <button id="close-search" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
+                                <h3 class="text-2xl font-bold mb-4">Search the Farm</h3>
+                                <form id="search-form">
+                                    <input type="text" id="search-input" class="w-full px-4 py-2 border rounded-lg" placeholder="e.g. 'duck eggs'">
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="relative">
+                        <a href="cart.html" class="hover:text-gray-700 transition-colors duration-300"><i class="fas fa-shopping-cart"></i><span id="cart-item-count" class="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <main>
+        <section id="about" class="bg-green-100 py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Our Story</h2>
+                <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed"><p class="mb-6">Established in 2010, Sunrise Farm began with a simple dream: to create a place where animals could thrive in a natural, loving environment. We believe in sustainable farming practices and the ethical treatment of all our animals. From the smallest chick to the largest bull, each creature is a part of our family and is cared for with the utmost respect and dedication.</p><p>Our commitment extends beyond our gates. We strive to be a positive force in our community, providing fresh, high-quality products and an educational experience for all who visit. We invite you to explore our website and learn more about what makes Sunrise Farm a special place.</p></div>
+            </div>
+        </section>
+
+        <!-- Our Farming Philosophy Section -->
+        <section id="philosophy" class="py-16">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Our Farming Philosophy</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">We believe that great food starts with a deep respect for nature. Our philosophy is built on three core principles.</p>
+                </div>
+                <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+                    <!-- Philosophy Card 1: Animal Welfare -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-heart text-5xl text-red-400 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Animal Welfare</h3>
+                        <p class="text-gray-700 leading-relaxed">Our animals are family. They live stress-free lives with open pastures to roam, fresh air to breathe, and natural diets. Happy animals lead to healthier, higher-quality products.</p>
+                    </div>
+                    <!-- Philosophy Card 2: Soil Health -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-seedling text-5xl text-green-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Soil Health</h3>
+                        <p class="text-gray-700 leading-relaxed">We feed the soil, and the soil feeds us. Through practices like rotational grazing and composting, we build rich, living soil that sequesters carbon and grows nutrient-dense food without synthetic inputs.</p>
+                    </div>
+                    <!-- Philosophy Card 3: Biodiversity -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <i class="fas fa-bug text-5xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Biodiversity</h3>
+                        <p class="text-gray-700 leading-relaxed">A thriving farm is a diverse ecosystem. We cultivate wildflowers for pollinators, protect natural waterways, and encourage a balance of wildlife, creating a resilient and vibrant farm environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Farm History Timeline Section -->
+        <section id="history-timeline" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">Our Journey Through the Years</h2>
+                <div class="relative wrap overflow-hidden p-10 h-full">
+                    <div class="border-2 absolute border-opacity-20 border-green-700 h-full border" style="left: 50%"></div>
+                    
+                    <!-- 2010 -->
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-element">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-12 h-12 rounded-full"><h1 class="mx-auto font-bold text-lg text-white">2010</h1></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <h3 class="font-bold text-gray-800 text-xl">The Dream Begins</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-600">Sunrise Farm is established with a small plot of land, a handful of chickens, and a dream of sustainable farming.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2012 -->
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline timeline-element">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-12 h-12 rounded-full"><h1 class="mx-auto font-bold text-lg text-white">2012</h1></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <h3 class="font-bold text-gray-800 text-xl">First Harvest</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-600">We celebrate our first successful harvest and begin selling fresh eggs and goat milk at the local farmers' market.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2015 -->
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-element">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-12 h-12 rounded-full"><h1 class="mx-auto font-bold text-lg text-white">2015</h1></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <h3 class="font-bold text-gray-800 text-xl">Expanding the Family</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-600">The farm welcomes its first herd of cattle, expanding our offerings to include high-quality, grass-fed beef.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline timeline-element">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-12 h-12 rounded-full"><h1 class="mx-auto font-bold text-lg text-white">2022</h1></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <h3 class="font-bold text-gray-800 text-xl">Going Digital</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-600">Our online store opens, making it easier for customers nationwide to order fresh farm products for delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Section -->
+        <section id="team" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">Our Team & Commitment</h2>
+                <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+                    <!-- Our Commitment -->
+                    <div class="bg-green-200 p-8 rounded-3xl shadow-xl">
+                        <div class="flex items-center gap-4 mb-4">
+                            <i class="fas fa-leaf text-4xl text-green-600"></i>
+                            <h3 class="text-3xl font-bold text-gray-800">Our Commitment</h3>
+                        </div>
+                        <p class="text-lg text-gray-700 leading-relaxed">Our team is the heart and soul of Sunrise Farm. We are a group of passionate individuals—farmers, animal lovers, and nature enthusiasts—united by a shared commitment to ethical and sustainable agriculture. Every member of our team pours their dedication into the daily care of our animals and the land we steward. We believe that happy, well-cared-for animals and a healthy environment are the cornerstones of the high-quality, wholesome products we are proud to offer our community. It's not just a job for us; it's a way of life we are excited to share with you.</p>
+                    </div>
+                    <!-- Key Staff -->
+                    <div class="p-8">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">Meet the Staff</h3>
+                        <div class="space-y-8">
+                            <!-- Staff Member: CEO -->
+                            <div class="flip-card h-48">
+                                <div class="flip-card-inner shadow-xl">
+                                    <div class="flip-card-front bg-white p-6 flex flex-col items-center justify-center text-center">
+                                        <img src="https://placehold.co/128x128/34d399/ffffff?text=L.Yusuf" alt="CEO and Owner" class="w-24 h-24 rounded-full shadow-lg border-4 border-green-200">
+                                        <h4 class="text-2xl font-semibold mt-2">LUQMAN YUSUF</h4>
+                                        <p class="text-green-600 font-medium">CEO & Owner</p>
+                                    </div>
+                                    <div class="flip-card-back bg-green-600 text-white p-6 flex flex-col items-center justify-center text-center">
+                                        <h4 class="text-2xl font-bold">LUQMAN YUSUF</h4>
+                                        <p class="mt-2">Luqman's vision and passion for sustainable agriculture are the foundation of Sunrise Farm. He leads the team with a commitment to quality and ethical farming.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Staff Member 1 -->
+                            <div class="flip-card h-40">
+                                <div class="flip-card-inner shadow-xl">
+                                    <div class="flip-card-front bg-white p-6 flex items-center gap-6">
+                                        <img src="https://placehold.co/100x100/a5a58d/ffffff?text=C.Adhiambo" alt="CHERYL ADHIAMBO" class="w-24 h-24 rounded-full shadow-md">
+                                        <div><h4 class="text-xl font-semibold">CHERYL ADHIAMBO</h4><p class="text-green-600 font-medium">Farm Manager</p></div>
+                                    </div>
+                                    <div class="flip-card-back bg-green-600 text-white p-6 flex flex-col justify-center">
+                                        <h4 class="text-xl font-bold">CHERYL ADHIAMBO</h4>
+                                        <p class="mt-2 text-sm">With over 20 years of farming experience, Cheryl oversees the daily operations and ensures every animal gets the best care.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Staff Member 2 -->
+                            <div class="flip-card h-40">
+                                <div class="flip-card-inner shadow-xl">
+                                    <div class="flip-card-front bg-white p-6 flex items-center gap-6">
+                                        <img src="images/Gemini_Generated_Image_ecwcnqecwcnqecwc - Copy.png" alt="ANAMI YUSUF" class="w-24 h-24 rounded-full shadow-md">
+                                        <div><h4 class="text-xl font-semibold">ANAMI YUSUF</h4><p class="text-green-600 font-medium">Animal Care Specialist</p></div>
+                                    </div>
+                                    <div class="flip-card-back bg-green-600 text-white p-6 flex flex-col justify-center">
+                                        <h4 class="text-xl font-bold">ANAMI YUSUF</h4>
+                                        <p class="mt-2 text-sm">Anami is our expert in animal health and well-being, ensuring our furry and feathered friends are always happy.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission, Vision, Motto Section -->
+        <section id="mission-vision" class="bg-green-100 py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+                    <!-- Our Mission -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-3xl font-bold text-green-600 mb-4">Our Mission</h3>
+                        <p class="text-gray-700 leading-relaxed">To cultivate a sustainable and humane farm that provides our community with high-quality, nutritious food, while fostering a deep respect for our animals and the environment.</p>
+                    </div>
+                    <!-- Our Vision -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-3xl font-bold text-green-600 mb-4">Our Vision</h3>
+                        <p class="text-gray-700 leading-relaxed">To be a leading example of ethical farming, where the well-being of animals and the health of the land create a thriving, transparent, and educational resource for all.</p>
+                    </div>
+                    <!-- Our Motto -->
+                    <div class="bg-white p-8 rounded-3xl shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <h3 class="text-3xl font-bold text-green-600 mb-4">Our Motto</h3>
+                        <p class="text-gray-700 leading-relaxed font-semibold italic">"Nurtured by Nature, Shared with Heart."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-4 mb-4">
+                        <img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-12 w-12 border-0 rounded-full">
+                        <h3 class="text-xl font-bold text-green-400">Sunrise Farm</h3>
+                    </div>
+                    <p class="text-gray-400">Sustainable farming with love and care for our animal family.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="index.html#animals" class="text-gray-400 hover:text-white">Our Family</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-white">Gallery</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white">Our Products</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-green-400">Follow Us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4"><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-facebook-f"></i></a><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-instagram"></i></a><a href="#" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-twitter"></i></a></div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <p class="mb-4 md:mb-0">&copy; 2024 Sunrise Farm. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" data-modal-trigger="terms" class="hover:text-white">Terms of Service</a>
+                    <a href="#" data-modal-trigger="privacy" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" data-modal-trigger="cookie" class="hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal -->
+    <div id="legal-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="legal-modal-close" class="modal-close-button">&times;</button>
+            <h2 id="legal-modal-title" class="modal-title"></h2>
+            <div id="legal-modal-body" class="modal-body">
+                <!-- Content will be injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="to-top-button" title="Go To Top"
+        class="fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-green-500 hover:bg-green-600 text-white text-lg font-semibold transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="search.js"></script>
+    <script src="modal.js"></script>
+    <script src="header.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Timeline Animation Logic
+            const timelineElements = document.querySelectorAll('.timeline-element');
+
+            if (timelineElements.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target); // Stop observing after animation
+                        }
+                    });
+                }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+                timelineElements.forEach(element => {
+                    observer.observe(element);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
