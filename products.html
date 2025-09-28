@@ -335,34 +335,51 @@
                     <p class="text-center text-gray-600">Our most popular and seasonal items are highlighted here. Check out what's fresh from the farm!</p>
                 </div>
 
+                <!-- Featured Products Slider -->
+                <div class="slider-container max-w-7xl mx-auto mb-16">
+                    <div id="featured-products-slider" class="slider flex">
+                        <!-- Featured products will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <style>
+                    .featured-slide {
+                        flex: 0 0 25%; /* Show 4 slides at once on larger screens */
+                        max-width: 25%;
+                        padding: 0 1rem;
+                    }
+                    @media (max-width: 1024px) { .featured-slide { flex: 0 0 33.33%; max-width: 33.33%; } }
+                    @media (max-width: 768px) { .featured-slide { flex: 0 0 50%; max-width: 50%; } }
+                </style>
+
                 <!-- Product Filter Section -->
                 <div class="text-center mb-16">
-                    <div class="inline-block bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+                    <div class="inline-block bg-gradient-to-br from-white/90 to-green-50/90 backdrop-blur-sm rounded-3xl p-6 shadow-lg border border-green-200/50">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">Filter Products</h3>
-                        <div id="product-filters" class="flex flex-wrap justify-center gap-3">
-                            <button class="filter-btn active px-6 py-3 bg-green-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300" data-filter="all">
+                        <div id="product-filters" class="flex flex-wrap justify-center gap-4">
+                            <button class="filter-btn active px-8 py-3 bg-green-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300" data-filter="all">
                                 <i class="fas fa-th-large mr-2"></i>All Products
                             </button>
-                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="dairy-eggs">
+                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="dairy-eggs">
                                 <i class="fas fa-egg mr-2"></i>Dairy & Eggs
                             </button>
-                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="meat">
+                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="meat">
                                 <i class="fas fa-bacon mr-2"></i>Meat
                             </button>
-                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="fish">
+                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="fish">
                                 <i class="fas fa-fish mr-2"></i>Fish
                             </button>
-                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="livestock">
+                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="livestock">
                                 <i class="fas fa-paw mr-2"></i>Livestock
                             </button>
-                            <button class="filter-btn px-6 py-3 bg-white/90 text-gray-700 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300" data-filter="bee-products">
+                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="bee-products">
                                 <i class="fas fa-spa mr-2"></i>Bee Products
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     <!-- Products will be dynamically generated here by JavaScript -->
                 </div>
             </div> 
@@ -552,6 +569,24 @@
                 unit: 'kg'
             },
             {
+                id: 'raw-honey',
+                name: 'Raw Honey',
+                price: 750,
+                image: 'images/honey.jpg',
+                category: 'bee-products',
+                description: 'Pure, raw honey from our hardworking bees, full of natural goodness.',
+                unit: 'jar'
+            },
+            {
+                id: 'beeswax',
+                name: 'Beeswax',
+                price: 500,
+                image: 'images/bee wax.jpg',
+                category: 'bee-products',
+                description: 'Natural beeswax for crafts, candles, and cosmetics.',
+                unit: 'block'
+            },
+            {
                 id: 'goats',
                 name: 'Goats',
                 price: 0,
@@ -623,25 +658,6 @@
                 description: 'Strong, healthy bulls and cattle for breeding and meat.',
                 unit: 'contact'
             }
-            ,
-            {
-                id: 'raw-honey',
-                name: 'Raw Honey',
-                price: 750,
-                image: 'images/honey.jpg',
-                category: 'bee-products',
-                description: 'Pure, raw honey from our hardworking bees, full of natural goodness.',
-                unit: 'jar'
-            },
-            {
-                id: 'beeswax',
-                name: 'Beeswax',
-                price: 500,
-                image: 'images/bee wax.jpg',
-                category: 'bee-products',
-                description: 'Natural beeswax for crafts, candles, and cosmetics.',
-                unit: 'block'
-            }
         ];
 
         // Render products
@@ -657,7 +673,7 @@
                      <span class="text-sm text-gray-500">/ ${product.unit}</span>`;
                 
                 const actionSection = isLivestock ?
-                    `<a href="contact.html" class="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
+                    `<a href="contact.html?subject=Inquiry about ${encodeURIComponent(product.name)}" class="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
                         <i class="fas fa-phone mr-2"></i>Contact for Prices
                      </a>` :
                     `<div class="flex items-center gap-3">
@@ -709,16 +725,51 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
+
+            // --- Featured Products Slider Logic ---
+            const featuredProductIds = ['fresh-eggs', 'goat-cheese', 'beef', 'raw-honey', 'dressed-duck', 'mutton'];
+            const featuredProducts = products.filter(p => featuredProductIds.includes(p.id));
+            const featuredSlider = document.getElementById('featured-products-slider');
+
+            if (featuredSlider) {
+                featuredSlider.innerHTML = featuredProducts.map(product => `
+                    <div class="featured-slide">
+                        <a href="#product-${product.id}" class="block bg-white rounded-2xl shadow-lg overflow-hidden group transition-transform duration-300 hover:-translate-y-2">
+                            <div class="relative">
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-0 left-0 p-4">
+                                    <h4 class="text-xl font-bold text-white">${product.name}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `).join('');
+
+                // Clone slides for infinite effect
+                const slides = featuredSlider.querySelectorAll('.featured-slide');
+                slides.forEach(slide => {
+                    const clone = slide.cloneNode(true);
+                    featuredSlider.appendChild(clone);
+                });
+
+                // Calculate animation duration
+                const originalSlideCount = featuredProducts.length;
+                const animationDuration = originalSlideCount * 5; // 5 seconds per slide
+
+                // Apply animation
+                featuredSlider.style.animation = `productSlide ${animationDuration}s linear infinite`;
+            }
             
             const filterButtons = document.querySelectorAll('.filter-btn');
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'bg-green-700', 'text-white');
-                        btn.classList.add('bg-white/90', 'text-gray-700');
+                        btn.classList.remove('active', 'bg-green-600', 'text-white', 'font-bold');
+                        btn.classList.add('bg-white', 'text-gray-700', 'font-semibold');
                     });
-                    button.classList.add('active', 'bg-green-700', 'text-white');
-                    button.classList.remove('bg-white/90', 'text-gray-700');
+                    button.classList.add('active', 'bg-green-600', 'text-white', 'font-bold');
+                    button.classList.remove('bg-white', 'text-gray-700', 'font-semibold');
 
                     const filter = button.dataset.filter;
                     renderProducts(filter);
@@ -733,11 +784,11 @@
 
                     // Reset category filters when searching
                     filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'bg-green-700', 'text-white');
-                        btn.classList.add('bg-white/90', 'text-gray-700');
+                        btn.classList.remove('active', 'bg-green-600', 'text-white', 'font-bold');
+                        btn.classList.add('bg-white', 'text-gray-700', 'font-semibold');
                         if (btn.dataset.filter === 'all') {
-                            btn.classList.add('active', 'bg-green-700', 'text-white');
-                            btn.classList.remove('bg-white/90', 'text-gray-700');
+                            btn.classList.add('active', 'bg-green-600', 'text-white', 'font-bold');
+                            btn.classList.remove('bg-white', 'text-gray-700', 'font-semibold');
                         }
                     });
 

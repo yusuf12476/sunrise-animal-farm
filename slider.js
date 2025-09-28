@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sliderContainer.addEventListener('mouseleave', () => { slider.style.animationPlayState = 'running'; });
     }
 
-    // Initialize the featured products slider on products.html
-    initializeSlider('#products .slider-container', '.slider', { durationPerSlide: 5, animationName: 'productSlide' });
+    // The featured products slider on products.html is now initialized directly in that file.
+    // initializeSlider('#products .slider-container', '.slider', { durationPerSlide: 5, animationName: 'productSlide' });
 
     // Initialize the testimonials slider on index.html
     initializeSlider('#testimonials-slider .slider-container', '.slider', { durationPerSlide: 10, animationName: 'testimonialSlide' });

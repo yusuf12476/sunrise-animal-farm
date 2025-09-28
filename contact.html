@@ -272,6 +272,15 @@
                     window.location.href = 'thank-you.html';
                 });
             }
+
+            // Check for a subject in the URL and pre-fill the message field
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject');
+            const messageTextarea = document.getElementById('message');
+
+            if (subject && messageTextarea) {
+                messageTextarea.value = `I'm interested in the following: ${subject}\n\n`;
+            }
         });
     </script>
 </body>
