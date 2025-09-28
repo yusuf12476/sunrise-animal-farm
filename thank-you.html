@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You for Your Order! - Sunrise Farm</title>
+    <title>Thank You - Sunrise Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="modal.css">
@@ -60,37 +60,39 @@
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-xl text-center">
                     <i class="fas fa-check-circle text-6xl text-green-500 mb-6"></i>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Thank You for Your Order!</h2>
-                    <p id="customer-name-placeholder" class="text-xl text-gray-700 mt-2"></p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Thank You for Your Order!</h2>
+                    <p id="customer-name-placeholder" class="text-xl text-gray-600 mt-4">Hi there,</p>
+                    <p class="text-lg text-gray-600 mt-2">Your order has been successfully placed. We've sent the details to you for confirmation.</p>
                     
-                    <p class="text-gray-600 mt-4">Your order has been placed successfully. A confirmation will be sent to you shortly.</p>
-
-                    <!-- Order Summary -->
-                    <div id="order-summary-section" class="mt-8 text-left border-t pt-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Order Summary</h3>
-                        <p class="mb-4 font-semibold">Order Number: <span id="order-number"></span></p>
-                        <div id="summary-items-container" class="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                    <div class="mt-8 text-left bg-gray-50 p-6 rounded-xl border">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-3">Order Summary</h3>
+                        <p class="text-lg mb-4">Order Number: <strong id="order-number" class="text-green-600">Loading...</strong></p>
+                        
+                        <div id="summary-items-container" class="space-y-3 mb-4 max-h-64 overflow-y-auto">
                             <!-- Order summary items will be injected here -->
                         </div>
+
                         <div class="border-t pt-4 space-y-2">
-                            <div class="flex justify-between text-lg">
+                            <div class="flex justify-between text-md">
                                 <span>Subtotal</span>
                                 <span id="summary-subtotal">Ksh 0.00</span>
                             </div>
-                            <div class="flex justify-between text-lg">
+                            <div class="flex justify-between text-md">
                                 <span>Shipping</span>
                                 <span id="summary-shipping">Ksh 0.00</span>
                             </div>
-                            <div class="flex justify-between text-2xl font-bold mt-2">
+                            <div class="flex justify-between text-md font-semibold">
+                                <span>Payment Method</span>
+                                <span id="summary-payment-method">Not specified</span>
+                            </div>
+                            <div class="flex justify-between text-xl font-bold mt-2 border-t pt-2">
                                 <span>Total</span>
                                 <span id="summary-total">Ksh 0.00</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-10">
-                        <a href="products.html" class="px-8 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300">Continue Shopping</a>
-                    </div>
+                    <a href="products.html" class="inline-block mt-8 px-8 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300">Continue Shopping</a>
                 </div>
             </div>
         </section>
@@ -122,6 +124,10 @@
             </div>
             <div class="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
                 <p class="mb-4 md:mb-0">&copy; 2024 Sunrise Farm. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" data-modal-trigger="terms" class="hover:text-white">Terms of Service</a>
+                    <a href="#" data-modal-trigger="privacy" class="hover:text-white">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -133,3 +139,389 @@
     <script src="main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-

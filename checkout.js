@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const address = formData.get('address')?.trim();
             const city = formData.get('city')?.trim();
             const zip = formData.get('zip')?.trim();
+            const paymentMethod = formData.get('payment'); // Get the selected payment method
             
             // Basic validation
             if (!name || !email || !address || !city || !zip) {
@@ -89,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 email: email,
                 address: address,
                 city: city,
-                zip: zip
+                zip: zip,
+                paymentMethod: paymentMethod
             };
             
             // Calculate totals
@@ -103,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 subtotal: subtotal,
                 shipping: SHIPPING_COST,
                 total: total,
-                orderNumber: `SF-${Date.now()}`
+                orderNumber: `SF-${Date.now()}`,
+                paymentMethod: paymentMethod // Add payment method to the order data
             };
             
             // Show the order method selection modal
@@ -145,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create Email order content
     function createEmailOrderContent(orderData) {
-        const { formData, cart, subtotal, shipping, total, orderNumber } = orderData;
+        const { formData, cart, subtotal, shipping, total, orderNumber, paymentMethod } = orderData;
         
         const subject = `New Order from Sunrise Farm - ${orderNumber}`;
 
@@ -156,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body += `  • ${item.name} (Qty: ${item.quantity}) - Ksh ${itemTotal.toFixed(2)}\n`;
         });
         
-        body += `\nSubtotal: Ksh ${subtotal.toFixed(2)}\nShipping: Ksh ${shipping.toFixed(2)}\nTotal: Ksh ${total.toFixed(2)}\n\nPayment Method: Pay on Delivery\n\nPlease confirm this order and let me know the delivery details.\n\nThank you,\n${formData.name}`;
+        body += `\nSubtotal: Ksh ${subtotal.toFixed(2)}\nShipping: Ksh ${shipping.toFixed(2)}\nTotal: Ksh ${total.toFixed(2)}\n\nPayment Method: ${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}\n\nPlease confirm this order and let me know the delivery details.\n\nThank you,\n${formData.name}`;
         
         return { subject, body };
     }
@@ -179,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create WhatsApp order content
     function createWhatsAppOrderContent(orderData) {
-        const { formData, cart, subtotal, shipping, total, orderNumber } = orderData;
+        const { formData, cart, subtotal, shipping, total, orderNumber, paymentMethod } = orderData;
         
         let whatsappContent = `Hello! I would like to place an order from Sunrise Farm.
 
@@ -200,7 +203,7 @@ Order Items:`;
         });
         
         whatsappContent += `\n\nOrder Total: Ksh ${total.toFixed(2)}
-Payment Method: Pay on Delivery
+Payment Method: ${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}
 
 Please confirm this order and let me know the delivery details. Thank you!`;
         
@@ -220,7 +223,8 @@ Please confirm this order and let me know the delivery details. Thank you!`;
             subtotal: orderData.subtotal,
             shipping: orderData.shipping,
             total: orderData.total,
-            orderNumber: orderData.orderNumber
+            orderNumber: orderData.orderNumber,
+            paymentMethod: orderData.paymentMethod
         };
         
         sessionStorage.setItem(COMPLETED_ORDER_KEY, JSON.stringify(orderDetails));

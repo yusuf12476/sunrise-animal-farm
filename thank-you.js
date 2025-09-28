@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const summarySubtotalEl = document.getElementById('summary-subtotal');
     const summaryShippingEl = document.getElementById('summary-shipping');
     const summaryTotalEl = document.getElementById('summary-total');
+    const summaryPaymentMethodEl = document.getElementById('summary-payment-method');
 
     // Retrieve order details from sessionStorage
     const orderDetails = JSON.parse(sessionStorage.getItem(COMPLETED_ORDER_KEY));
@@ -56,6 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (summaryTotalEl) {
         summaryTotalEl.textContent = `Ksh ${orderDetails.total.toFixed(2)}`;
+    }
+
+    if (summaryPaymentMethodEl && orderDetails.paymentMethod) {
+        // Capitalize the first letter for better display
+        summaryPaymentMethodEl.textContent = orderDetails.paymentMethod.charAt(0).toUpperCase() + orderDetails.paymentMethod.slice(1);
     }
 
     // Clear the order details from sessionStorage after displaying them
