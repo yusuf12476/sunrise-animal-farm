@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Bees - Sunrise Farm</title>
+    <title>Nourishing Mutton & Barley Soup Recipe - Sunrise Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="modal.css">
@@ -15,6 +14,19 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
+        }
+        .recipe-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content li {
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
@@ -65,20 +77,62 @@
     <main>
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-8">Our Bees</h2>
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <img src="images/beess on honey comb.jpg" alt="Bees on a honeycomb" class="rounded-2xl shadow-lg w-full h-auto">
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+                    <div class="text-center mb-8">
+                        <a href="recipes.html" class="text-green-600 hover:text-green-800 font-semibold"><i class="fas fa-arrow-left mr-2"></i>Back to All Recipes</a>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Nourishing Mutton & Barley Soup</h2>
+                        <p class="text-lg text-gray-600 mt-4">A rich and wholesome soup made with our flavorful mutton, hearty barley, and a medley of vegetables. A true farm classic.</p>
+                    </div>
+
+                    <img src="images/mutton soup.jpg" alt="Nourishing Mutton & Barley Soup" class="w-full h-auto object-cover rounded-2xl shadow-lg mb-8">
+
+                    <div class="flex flex-wrap justify-center gap-6 text-center mb-10">
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Prep Time</p>
+                            <p class="text-gray-600">20 mins</p>
                         </div>
-                        <div class="text-lg text-gray-700 leading-relaxed space-y-6">
-                            <p>The gentle hum of our honeybees is the heartbeat of the farm's ecosystem. These incredible pollinators are vital to the health of our crops and wildflowers. We maintain our hives with the utmost care, ensuring the colonies are strong and healthy.</p>
-                            <h3 class="text-2xl font-semibold text-gray-800 pt-4">Our Apiary:</h3>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><strong>Italian Honey Bees:</strong> We primarily raise Italian honey bees, known for their gentle nature and prolific honey production. They are excellent foragers and adapt well to our local climate.</li>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Cook Time</p>
+                            <p class="text-gray-600">1.5-2 hours</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Servings</p>
+                            <p class="text-gray-600">6</p>
+                        </div>
+                    </div>
+
+                    <div class="recipe-content grid md:grid-cols-3 gap-8 text-lg leading-relaxed">
+                        <div class="md:col-span-1">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Ingredients</h3>
+                            <ul>
+                                <li>1.5 lbs <a href="products.html#product-mutton" class="text-green-600 font-bold hover:underline">Sunrise Farm Mutton</a>, cubed</li>
+                                <li>1 tbsp olive oil</li>
+                                <li>1 large onion, chopped</li>
+                                <li>2 carrots, chopped</li>
+                                <li>2 celery stalks, chopped</li>
+                                <li>8 cups beef or vegetable broth</li>
+                                <li>3/4 cup pearl barley, rinsed</li>
+                                <li>2 cloves garlic, minced</li>
+                                <li>1 tsp dried rosemary</li>
+                                <li>Salt and pepper to taste</li>
+                                <li>Fresh parsley, chopped, for garnish</li>
                             </ul>
-                            <p>Our approach to beekeeping is natural and treatment-free. We allow the bees to build their own comb and only harvest surplus honey, ensuring they have more than enough to sustain themselves through the winter. This results in pure, raw honey that is a true taste of our farm's diverse flora.</p>
                         </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Instructions</h3>
+                            <ol>
+                                <li><strong>Brown the Mutton:</strong> Season the mutton cubes with salt and pepper. Heat olive oil in a large pot or Dutch oven over medium-high heat. Brown the mutton on all sides. Remove from the pot and set aside.</li>
+                                <li><strong>Sauté Vegetables:</strong> Add the onion, carrots, and celery to the pot. Cook until softened, about 5-7 minutes. Add the minced garlic and cook for one more minute until fragrant.</li>
+                                <li><strong>Combine and Simmer:</strong> Return the mutton to the pot. Add the beef broth, rinsed barley, and dried rosemary. Bring to a boil, then reduce heat to a gentle simmer.</li>
+                                <li><strong>Cook the Soup:</strong> Cover and let the soup simmer for at least 1.5 hours, or until the mutton is tender and the barley is fully cooked. Stir occasionally.</li>
+                                <li><strong>Season and Serve:</strong> Taste the soup and adjust seasoning with salt and pepper as needed. Ladle into bowls and garnish with fresh chopped parsley before serving.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                        <h4 class="text-2xl font-bold text-yellow-800 mb-2">A Note on Mutton</h4>
+                        <p class="text-yellow-900">Mutton, meat from adult sheep, has a richer, more intense flavor than lamb. Slow cooking it in a soup like this makes it incredibly tender and allows its deep flavor to infuse the entire dish.</p>
                     </div>
                 </div>
             </div>
@@ -127,9 +181,7 @@
         <div class="modal-content">
             <button id="legal-modal-close" class="modal-close-button">&times;</button>
             <h2 id="legal-modal-title" class="modal-title"></h2>
-            <div id="legal-modal-body" class="modal-body">
-                <!-- Content will be injected by JavaScript -->
-            </div>
+            <div id="legal-modal-body" class="modal-body"></div>
         </div>
     </div>
 

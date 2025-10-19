@@ -246,6 +246,38 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(135deg, #059669, #047857);
         }
+
+        /* New Product Card Styles */
+        .product-card .product-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem; /* rounded-3xl */
+        }
+        .product-card .category-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px; /* rounded-full */
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .product-card .add-to-cart-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .product-card:hover .add-to-cart-overlay {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-green-50 text-gray-800">
@@ -265,6 +297,7 @@
                         <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
                             <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
                             <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="recipes.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Recipes</a>
                             <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
                             <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
                         </div>
@@ -369,11 +402,11 @@
                             <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="fish">
                                 <i class="fas fa-fish mr-2"></i>Fish
                             </button>
-                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="livestock">
-                                <i class="fas fa-paw mr-2"></i>Livestock
-                            </button>
                             <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="bee-products">
                                 <i class="fas fa-spa mr-2"></i>Bee Products
+                            </button>
+                            <button class="filter-btn px-8 py-3 bg-white text-gray-700 font-semibold rounded-full shadow-md hover:bg-green-100 hover:shadow-lg transition-all duration-300" data-filter="livestock">
+                                <i class="fas fa-paw mr-2"></i>Livestock
                             </button>
                         </div>
                     </div>
@@ -560,6 +593,33 @@
                 unit: 'kg'
             },
             {
+                id: 'whole-tilapia',
+                name: 'Whole Tilapia',
+                price: 500,
+                image: 'images/tilapia.jpg', // You may need to add this image
+                category: 'fish',
+                description: 'Fresh, whole tilapia, cleaned and ready to cook. Perfect for grilling or frying.',
+                unit: 'kg'
+            },
+            {
+                id: 'catfish-fillet',
+                name: 'Catfish Fillet',
+                price: 650,
+                image: 'images/catfish.jpg', // You may need to add this image
+                category: 'fish',
+                description: 'Mild and sweet catfish fillets, deboned and ready for your favorite recipe.',
+                unit: 'kg'
+            },
+            {
+                id: 'smoked-catfish',
+                name: 'Smoked Catfish',
+                price: 900,
+                image: 'images/smoked_catfish_feature.jpg', // You may need to add this image
+                category: 'fish',
+                description: 'Richly flavored, farm-smoked catfish. A delicacy that adds depth to soups and stews.',
+                unit: 'piece'
+            },
+            {
                 id: 'raw-honey',
                 name: 'Raw Honey',
                 price: 750,
@@ -576,6 +636,42 @@
                 category: 'bee-products',
                 description: 'Natural beeswax for crafts, candles, and cosmetics.',
                 unit: 'block'
+            },
+            {
+                id: 'goat-milk',
+                name: 'Goat Milk',
+                price: 250,
+                image: 'images/goat milk.jpg', // You may need to add this image
+                category: 'dairy-eggs',
+                description: 'Fresh, creamy goat milk with a mild, sweet flavor. A great alternative to cow\'s milk.',
+                unit: 'liter'
+            },
+            {
+                id: 'lamb-meat',
+                name: 'Lamb',
+                price: 1400,
+                image: 'images/lamb meat.webp', // You may need to add this image
+                category: 'meat',
+                description: 'Tender, pasture-raised lamb with a delicate flavor. Perfect for roasting or grilling.',
+                unit: 'kg'
+            },
+            {
+                id: 'turkey-eggs',
+                name: 'Turkey Eggs',
+                price: 800,
+                image: 'images/turkey eggs.jpg', // You may need to add this image
+                category: 'dairy-eggs',
+                description: 'Large, rich turkey eggs with a creamy texture. A seasonal treat for gourmet breakfasts.',
+                unit: 'dozen'
+            },
+            {
+                id: 'goose-eggs',
+                name: 'Goose Eggs',
+                price: 1000,
+                image: 'images/goose eggs.jpg', // You may need to add this image
+                category: 'dairy-eggs',
+                description: 'Enormous and incredibly rich goose eggs, available for a limited time each spring. Ideal for baking.',
+                unit: 'half-dozen'
             },
             {
                 id: 'goats',
@@ -648,57 +744,140 @@
                 category: 'livestock',
                 description: 'Strong, healthy bulls and cattle for breeding and meat.',
                 unit: 'contact'
+            },
+            {
+                id: 'calves',
+                name: 'Calves',
+                price: 0,
+                image: 'images/calves.jpg', // You may need to add this image
+                category: 'livestock',
+                description: 'Healthy and well-cared-for calves, perfect for starting or growing your herd.',
+                unit: 'contact'
+            },
+            {
+                id: 'lambs',
+                name: 'Lambs',
+                price: 0,
+                image: 'images/lamb.webp', // You may need to add this image
+                category: 'livestock',
+                description: 'Adorable and robust lambs, raised on pasture with their mothers.',
+                unit: 'contact'
+            },
+            {
+                id: 'kids',
+                name: 'Kids (Young Goats)',
+                price: 0,
+                image: 'images/kid.jpg', // You may need to add this image
+                category: 'livestock',
+                description: 'Playful and curious goat kids, from excellent dairy and meat lines.',
+                unit: 'contact'
             }
         ];
 
-        // Render products
-        function renderProducts(filter = 'all') {
-            const productGrid = document.getElementById('product-grid');
-            const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-            
-            productGrid.innerHTML = filteredProducts.map(product => {
-                const isLivestock = product.category === 'livestock';
-                const priceSection = isLivestock ? 
-                    '<span class="text-lg font-bold text-gray-600">Contact for Prices</span>' :
-                    `<span class="text-xl font-bold text-gray-800">Ksh ${product.price.toFixed(2)}</span>
-                     <span class="text-sm text-gray-500">/ ${product.unit}</span>`;
-                
-                const actionSection = isLivestock ?
-                    `<a href="contact.html?subject=Inquiry about ${encodeURIComponent(product.name)}" class="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
-                        <i class="fas fa-phone mr-2"></i>Contact for Prices
-                     </a>` :
-                    `<div class="flex items-center gap-3">
-                        <label for="qty-${product.id}" class="text-sm font-medium text-gray-700">Qty:</label>
-                        <input type="number" id="qty-${product.id}" value="1" min="1" max="10" class="quantity-input-sm border border-gray-300 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-green-500 focus:border-green-500" onclick="event.stopPropagation()">
-                        <button onclick="event.stopPropagation(); const qty = document.getElementById('qty-${product.id}').value; addToCart({id: '${product.id}', name: '${product.name}', price: ${product.price}, image: '${product.image}'}, parseInt(qty) || 1)" class="flex-1 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-105 active:scale-95">
-                            <i class="fas fa-cart-plus mr-2"></i>Add to Cart
-                        </button>
-                     </div>`;
+        // --- Product Rendering Logic ---
 
-                return `
-                    <div id="product-${product.id}"
-                         class="product-card bg-white rounded-3xl shadow-xl flex flex-col overflow-hidden group hover:shadow-2xl transition-shadow duration-300" 
-                         data-category="${product.category}"
-                         data-product-id="${product.id}"
-                         data-product-name="${product.name}"
-                         data-product-price="${product.price}"
-                         data-product-image="${product.image}">
-                        <div class="relative overflow-hidden">
-                            <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-semibold mb-3 text-gray-800">${product.name}</h3>
-                            <p class="text-gray-600 mb-4 flex-grow leading-relaxed">${product.description}</p>
-                            <div class="flex flex-col gap-3 mt-auto">
-                                <div class="flex justify-between items-center">
-                                    ${priceSection}
-                                </div>
-                                ${actionSection}
-                            </div>
+        /**
+         * Generates the HTML for a single product card.
+         * @param {object} product - The product object.
+         * @returns {string} - The HTML string for the product card.
+         */
+        function createProductCardHTML(product) {
+            const isLivestock = product.category === 'livestock';
+            const priceSection = isLivestock ?
+                '<span class="text-lg font-bold text-gray-600">Contact for Prices</span>' :
+                `<span class="text-xl font-bold text-gray-800">Ksh ${product.price.toFixed(2)}</span>
+                 <span class="text-sm text-gray-500">/ ${product.unit}</span>`;
+
+            const actionSection = isLivestock ?
+                `<a href="contact.html?subject=Inquiry about ${encodeURIComponent(product.name)}" class="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
+                    <i class="fas fa-phone mr-2"></i>Contact for Prices
+                 </a>` : `
+                <div class="add-to-cart-overlay p-4">
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="qty-${product.id}" value="1" min="1" max="10" class="quantity-input-sm border-gray-300 rounded-md text-center" onclick="event.stopPropagation()">
+                        <button onclick="event.stopPropagation(); const qty = document.getElementById('qty-${product.id}').value; addToCart({id: '${product.id}', name: '${product.name}', price: ${product.price}, image: '${product.image}'}, parseInt(qty) || 1)" class="add-to-cart-btn flex-1 px-4 py-2 bg-green-500 text-white font-bold rounded-md shadow-lg hover:bg-green-600 transition-colors duration-300">
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>`;
+
+            return `
+                <div id="product-${product.id}"
+                     class="product-card bg-white rounded-3xl shadow-xl flex flex-col group" 
+                     data-category="${product.category}"
+                     data-product-id="${product.id}"
+                     data-product-name="${product.name}"
+                     data-product-price="${product.price}"
+                     data-product-image="${product.image}">
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                        <div class="category-tag">${product.category.replace('-', ' & ')}</div>
+                        ${actionSection}
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">${product.name}</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">${product.description}</p>
+                        <div class="mt-auto">
+                            ${priceSection}
                         </div>
                     </div>
-                `;
-            }).join('');
+                </div>
+            `;
+        }
+
+        /**
+         * Renders products, grouped by category if 'all' is selected.
+         * @param {string} [filter='all'] - The category to filter by.
+         */
+        function renderProducts(filter = 'all') {
+            const productGrid = document.getElementById('product-grid');
+            productGrid.innerHTML = ''; // Clear existing content
+
+            const categories = {
+                'dairy-eggs': 'Dairy & Eggs',
+                'meat': 'Meat',
+                'fish': 'Fish',
+                'bee-products': 'Bee Products',
+                'livestock': 'Livestock'
+            };
+
+            if (filter === 'all') {
+                // Group by category
+                const productsByCategory = products.reduce((acc, product) => {
+                    (acc[product.category] = acc[product.category] || []).push(product);
+                    return acc;
+                }, {});
+
+                // Render each category
+                Object.keys(categories).forEach(categoryKey => {
+                    if (productsByCategory[categoryKey]) {
+                        const categoryName = categories[categoryKey];
+                        const categoryProducts = productsByCategory[categoryKey];
+
+                        // Create category header
+                        const header = document.createElement('h3');
+                        header.className = 'col-span-full text-3xl font-bold text-gray-800 mt-12 mb-4 border-b-2 border-green-200 pb-2';
+                        header.textContent = categoryName;
+                        productGrid.appendChild(header);
+
+                        // Render products for this category
+                        categoryProducts.forEach(product => {
+                            productGrid.insertAdjacentHTML('beforeend', createProductCardHTML(product));
+                        });
+                    }
+                });
+            } else {
+                // Filter and render a single category
+                const filteredProducts = products.filter(p => p.category === filter);
+                
+                // Add a header for the filtered category
+                const header = document.createElement('h3');
+                header.className = 'col-span-full text-3xl font-bold text-gray-800 mb-4';
+                header.textContent = categories[filter];
+                productGrid.appendChild(header);
+
+                productGrid.insertAdjacentHTML('beforeend', filteredProducts.map(createProductCardHTML).join(''));
+            }
         }
 
         // Initialize
@@ -706,7 +885,7 @@
             renderProducts();
 
             // --- Featured Products Slider Logic ---
-            const featuredProductIds = ['fresh-eggs', 'goat-cheese', 'beef', 'raw-honey', 'dressed-duck', 'mutton'];
+            const featuredProductIds = ['fresh-eggs', 'goat-cheese', 'beef', 'raw-honey', 'dressed-duck', 'mutton', 'whole-tilapia'];
             const featuredProducts = products.filter(p => featuredProductIds.includes(p.id));
             const featuredSlider = document.getElementById('featured-products-slider');
 
@@ -759,31 +938,78 @@
             // --- Live Product Search Logic ---
             const productPageSearchInput = document.getElementById('product-page-search-input');
             if (productPageSearchInput) {
-                productPageSearchInput.addEventListener('input', () => {
+                productPageSearchInput.addEventListener('input', (e) => {
                     const query = productPageSearchInput.value.trim().toLowerCase();
-
-                    // Reset category filters when searching
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'bg-green-600', 'text-white', 'font-bold');
-                        btn.classList.add('bg-white', 'text-gray-700', 'font-semibold');
-                        if (btn.dataset.filter === 'all') {
-                            btn.classList.add('active', 'bg-green-600', 'text-white', 'font-bold');
-                            btn.classList.remove('bg-white', 'text-gray-700', 'font-semibold');
-                        }
+                    const productGrid = document.getElementById('product-grid');
+            
+                    // Filter products based on the search query
+                    const searchedProducts = products.filter(product => {
+                        const name = product.name.toLowerCase();
+                        const description = product.description.toLowerCase();
+                        return name.includes(query) || description.includes(query);
                     });
+            
+                    // Render only the searched products
+                    productGrid.innerHTML = searchedProducts.map(product => {
+                        // This is the same mapping logic from renderProducts.
+                        // A more advanced implementation might refactor this into a single function.
+                        const isLivestock = product.category === 'livestock';
+                        const priceSection = isLivestock ? 
+                            '<span class="text-lg font-bold text-gray-600">Contact for Prices</span>' :
+                            `<span class="text-xl font-bold text-gray-800">Ksh ${product.price.toFixed(2)}</span><span class="text-sm text-gray-500"> / ${product.unit}</span>`;
+                        
+                        const actionSection = isLivestock ?
+                            `<a href="contact.html?subject=Inquiry about ${encodeURIComponent(product.name)}" class="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
+                                <i class="fas fa-phone mr-2"></i>Contact for Prices
+                             </a>` : `
+                            <div class="add-to-cart-overlay p-4">
+                                <div class="flex items-center gap-2">
+                                    <input type="number" id="qty-${product.id}" value="1" min="1" max="10" class="quantity-input-sm border-gray-300 rounded-md text-center" onclick="event.stopPropagation()">
+                                    <button onclick="event.stopPropagation(); const qty = document.getElementById('qty-${product.id}').value; addToCart({id: '${product.id}', name: '${product.name}', price: ${product.price}, image: '${product.image}'}, parseInt(qty) || 1)" class="add-to-cart-btn flex-1 px-4 py-2 bg-green-500 text-white font-bold rounded-md shadow-lg hover:bg-green-600 transition-colors duration-300">
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                </div>
+                            </div>`;
 
-                    const productCards = document.querySelectorAll('#product-grid .product-card');
-                    productCards.forEach(card => {
-                        const title = card.dataset.productName?.toLowerCase() || '';
-                        const description = card.querySelector('p')?.textContent.toLowerCase() || '';
-                        const isVisible = title.includes(query) || description.includes(query);
+                        return `
+                            <div id="product-${product.id}"
+                                 class="product-card bg-white rounded-3xl shadow-xl flex flex-col overflow-hidden group hover:shadow-2xl transition-shadow duration-300" 
+                                 data-category="${product.category}"
+                                 data-product-id="${product.id}"
+                                 data-product-name="${product.name}"
+                                 data-product-price="${product.price}"
+                                 data-product-image="${product.image}">
+                                <div class="product-image-container">
+                                    <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                                    <div class="category-tag">${product.category.replace('-', ' & ')}</div>
+                                    ${actionSection}
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h3 class="text-xl font-semibold mb-2 text-gray-800">${product.name}</h3>
+                                    <p class="text-gray-600 text-sm mb-4 flex-grow">${product.description}</p>
+                                    <div class="mt-auto">
+                                        ${priceSection}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
 
-                        if (isVisible) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
+                    // If the search bar is cleared, render all products again
+                    if (query === '') {
+                        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+                        renderProducts(activeFilter);
+                    } else {
+                         // When searching, visually reset the filters to "All"
+                        filterButtons.forEach(btn => {
+                            btn.classList.remove('active', 'bg-green-600', 'text-white', 'font-bold');
+                            btn.classList.add('bg-white', 'text-gray-700', 'font-semibold');
+                            if (btn.dataset.filter === 'all') {
+                                btn.classList.add('active', 'bg-green-600', 'text-white', 'font-bold');
+                                btn.classList.remove('bg-white', 'text-gray-700', 'font-semibold');
+                            }
                         }
-                    });
+                    )};
                 });
             }
 
@@ -795,18 +1021,23 @@
                     if (!card || e.target.closest('button') || e.target.closest('a') || e.target.closest('input')) {
                         return;
                     }
-                    // Add to cart if it's a purchasable item
-                    if (card.dataset.category !== 'livestock') {
-                        const qty = card.querySelector('input[type="number"]')?.value || 1;
-                        addToCart({
-                            id: card.dataset.productId,
-                            name: card.dataset.productName,
-                            price: parseFloat(card.dataset.productPrice),
-                            image: card.dataset.productImage
-                        }, parseInt(qty));
-                    }
-                    // addRecentlyViewedItemFromCard(card); // Removed recently viewed functionality
+
+                    addRecentlyViewedItemFromCard(card);
                 });
+            }
+
+            function addRecentlyViewedItemFromCard(card) {
+                const product = {
+                    id: card.dataset.productId,
+                    name: card.dataset.productName,
+                    price: parseFloat(card.dataset.productPrice),
+                    image: card.dataset.productImage,
+                    category: card.dataset.category,
+                    description: card.querySelector('p').textContent,
+                    unit: card.querySelector('.text-sm.text-gray-500')?.textContent.replace('/ ', '') || 'unit'
+                };
+                // Make sure recentlyViewed.js is loaded
+                if (typeof addRecentlyViewedItem === 'function') addRecentlyViewedItem(product);
             }
         });
     </script>
@@ -816,6 +1047,7 @@
     <script src="header.js"></script>
     <script src="slider.js"></script>
     <script src="cart.js"></script>
+    <script src="recentlyViewed.js"></script>
     <script src="main.js"></script>
 
 </body>

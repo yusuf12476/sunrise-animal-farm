@@ -16,6 +16,19 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
         }
+        /* Custom styles for checked radio button parent */
+        .payment-option:has(input:checked) {
+            border-color: #10b981; /* green-500 */
+            background-color: #f0fdf4; /* green-50 */
+            box-shadow: 0 0 0 2px #10b981;
+        }
+        .payment-option:has(input:checked) .radio-check {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .radio-check {
+            transition: all 0.2s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-green-50 text-gray-800">
@@ -35,6 +48,7 @@
                         <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
                             <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
                             <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="recipes.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Recipes</a>
                             <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
                             <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
                         </div>
@@ -58,76 +72,73 @@
     <main>
         <section id="checkout" class="py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-12">Checkout</h2>
-                <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
 
                     <!-- Shipping & Payment Form -->
-                    <div class="bg-white p-8 rounded-3xl shadow-xl">
+                    <div class="lg:col-span-3">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-8">Complete Your Order</h2>
                         <form id="checkout-form">
-                            <!-- Shipping Information -->
-                            <div class="mb-8">
-                                <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Shipping Information</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label for="name" class="block text-lg font-medium text-gray-700">Full Name</label>
-                                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
-                                    </div>
-                                    <div>
-                                        <label for="email" class="block text-lg font-medium text-gray-700">Email Address</label>
-                                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
-                                    </div>
-                                    <div class="md:col-span-2">
-                                        <label for="address" class="block text-lg font-medium text-gray-700">Street Address</label>
-                                        <input type="text" id="address" name="address" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
-                                    </div>
-                                    <div>
-                                        <label for="city" class="block text-lg font-medium text-gray-700">City</label>
-                                        <input type="text" id="city" name="city" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
-                                    </div>
-                                    <div>
-                                        <label for="zip" class="block text-lg font-medium text-gray-700">Postal Code</label>
-                                        <input type="text" id="zip" name="zip" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
+                            <div class="space-y-10">
+                                <!-- Step 1: Shipping Information -->
+                                <div class="bg-white p-8 rounded-3xl shadow-xl">
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3"><span class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full text-lg">1</span> Shipping Information</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label for="name" class="block text-lg font-medium text-gray-700 mb-1">Full Name</label>
+                                            <input type="text" id="name" name="name" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
+                                        </div>
+                                        <div>
+                                            <label for="email" class="block text-lg font-medium text-gray-700 mb-1">Email Address</label>
+                                            <input type="email" id="email" name="email" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
+                                        </div>
+                                        <div class="md:col-span-2">
+                                            <label for="address" class="block text-lg font-medium text-gray-700 mb-1">Street Address</label>
+                                            <input type="text" id="address" name="address" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
+                                        </div>
+                                        <div>
+                                            <label for="city" class="block text-lg font-medium text-gray-700 mb-1">City</label>
+                                            <input type="text" id="city" name="city" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
+                                        </div>
+                                        <div>
+                                            <label for="zip" class="block text-lg font-medium text-gray-700 mb-1">Postal Code</label>
+                                            <input type="text" id="zip" name="zip" class="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Payment Information -->
-                            <div>
-                                <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Payment Details</h3>
-                                <div class="space-y-4">
-                                    <div class="p-4 border rounded-lg bg-gray-100 has-[:checked]:bg-green-100 has-[:checked]:border-green-400 transition-all">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" name="payment" value="delivery" class="form-radio h-5 w-5 text-green-600 focus:ring-green-500" checked>
-                                            <span class="ml-3 text-lg font-medium">Pay on Delivery</span>
-                                            <i class="fas fa-truck ml-auto text-gray-500 text-xl"></i>
+    
+                                <!-- Step 2: Payment Information -->
+                                <div class="bg-white p-8 rounded-3xl shadow-xl">
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3"><span class="flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full text-lg">2</span> Payment Method</h3>
+                                    <div class="space-y-4">
+                                        <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all">
+                                            <input type="radio" name="payment" value="delivery" class="sr-only" checked>
+                                            <i class="fas fa-truck text-gray-500 text-2xl w-8"></i>
+                                            <span class="ml-4 text-lg font-medium">Pay on Delivery</span>
+                                            <i class="fas fa-check-circle text-green-500 ml-auto text-xl opacity-0 radio-check transform scale-50"></i>
                                         </label>
-                                    </div>
-                                    <div class="p-4 border rounded-lg bg-gray-100 has-[:checked]:bg-green-100 has-[:checked]:border-green-400 transition-all">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" name="payment" value="mpesa" class="form-radio h-5 w-5 text-green-600 focus:ring-green-500">
-                                            <span class="ml-3 text-lg font-medium">M-Pesa</span>
-                                            <i class="fas fa-mobile-alt ml-auto text-green-700 text-xl"></i>
+                                        <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all">
+                                            <input type="radio" name="payment" value="mpesa" class="sr-only">
+                                            <i class="fas fa-mobile-alt text-green-700 text-2xl w-8"></i>
+                                            <span class="ml-4 text-lg font-medium">M-Pesa</span>
+                                            <i class="fas fa-check-circle text-green-500 ml-auto text-xl opacity-0 radio-check transform scale-50"></i>
                                         </label>
-                                    </div>
-                                    <div class="p-4 border rounded-lg bg-gray-100 has-[:checked]:bg-green-100 has-[:checked]:border-green-400 transition-all">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" name="payment" value="airtel" class="form-radio h-5 w-5 text-green-600 focus:ring-green-500">
-                                            <span class="ml-3 text-lg font-medium">Airtel Money</span>
-                                            <i class="fas fa-mobile-alt ml-auto text-red-600 text-xl"></i>
+                                        <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all">
+                                            <input type="radio" name="payment" value="airtel" class="sr-only">
+                                            <i class="fas fa-mobile-alt text-red-600 text-2xl w-8"></i>
+                                            <span class="ml-4 text-lg font-medium">Airtel Money</span>
+                                            <i class="fas fa-check-circle text-green-500 ml-auto text-xl opacity-0 radio-check transform scale-50"></i>
                                         </label>
-                                    </div>
-                                    <div class="p-4 border rounded-lg bg-gray-100 has-[:checked]:bg-green-100 has-[:checked]:border-green-400 transition-all">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" name="payment" value="paypal" class="form-radio h-5 w-5 text-green-600 focus:ring-green-500">
-                                            <span class="ml-3 text-lg font-medium">PayPal</span>
-                                            <i class="fab fa-paypal ml-auto text-blue-600 text-xl"></i>
+                                        <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all">
+                                            <input type="radio" name="payment" value="paypal" class="sr-only">
+                                            <i class="fab fa-paypal text-blue-600 text-2xl w-8"></i>
+                                            <span class="ml-4 text-lg font-medium">PayPal</span>
+                                            <i class="fas fa-check-circle text-green-500 ml-auto text-xl opacity-0 radio-check transform scale-50"></i>
                                         </label>
-                                    </div>
-                                    <div class="p-4 border rounded-lg bg-gray-100 has-[:checked]:bg-green-100 has-[:checked]:border-green-400 transition-all">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input type="radio" name="payment" value="bank" class="form-radio h-5 w-5 text-green-600 focus:ring-green-500">
-                                            <span class="ml-3 text-lg font-medium">Bank Transfer</span>
-                                            <i class="fas fa-university ml-auto text-gray-500 text-xl"></i>
+                                        <label class="payment-option flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer transition-all">
+                                            <input type="radio" name="payment" value="bank" class="sr-only">
+                                            <i class="fas fa-university text-gray-500 text-2xl w-8"></i>
+                                            <span class="ml-4 text-lg font-medium">Bank Transfer</span>
+                                            <i class="fas fa-check-circle text-green-500 ml-auto text-xl opacity-0 radio-check transform scale-50"></i>
                                         </label>
                                     </div>
                                 </div>
@@ -136,9 +147,10 @@
                     </div>
 
                     <!-- Order Summary -->
-                    <div class="bg-white p-8 rounded-3xl shadow-xl h-fit lg:sticky top-28">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-4">Your Order</h3>
-                        <div id="summary-items-container" class="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-8 rounded-3xl shadow-xl h-fit lg:sticky top-28">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-4">Order Summary</h3>
+                        <div id="summary-items-container" class="space-y-4 mb-6 max-h-80 overflow-y-auto pr-2">
                             <!-- Order summary items will be injected here -->
                         </div>
                         <div class="border-t pt-6 space-y-3">
@@ -155,7 +167,8 @@
                                 <span id="summary-total">Ksh 250.00</span>
                             </div>
                         </div>
-                        <button type="submit" form="checkout-form" class="w-full mt-8 px-8 py-4 bg-green-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300">Place Order</button>
+                        <button type="submit" form="checkout-form" class="w-full mt-8 px-8 py-4 bg-green-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 active:scale-100">
+                            <i class="fas fa-lock mr-2"></i>Place Order</button>
                     </div>
                 </div>
             </div>

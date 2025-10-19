@@ -71,6 +71,7 @@
                         <div id="more-dropdown-menu" class="hidden absolute top-full left-0 mt-2 z-50 bg-white rounded-lg shadow-xl w-48 py-2">
                             <a href="gallery.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Gallery</a>
                             <a href="blog.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Farm News</a>
+                            <a href="recipes.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Recipes</a>
                             <a href="about.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">About Us</a>
                             <a href="contact.html" class="block px-4 py-2 text-gray-800 hover:bg-green-100">Contact</a>
                         </div>
@@ -100,8 +101,15 @@
     <main>
         <section id="about" class="bg-green-100 py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Our Story</h2>
-                <div class="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed"><p class="mb-6">Established in 2010, Sunrise Farm began with a simple dream: to create a place where animals could thrive in a natural, loving environment. We believe in sustainable farming practices and the ethical treatment of all our animals. From the smallest chick to the largest bull, each creature is a part of our family and is cared for with the utmost respect and dedication.</p><p>Our commitment extends beyond our gates. We strive to be a positive force in our community, providing fresh, high-quality products and an educational experience for all who visit. We invite you to explore our website and learn more about what makes Sunrise Farm a special place.</p></div>
+                <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12 items-center">
+                    <div class="md:col-span-1 text-center">
+                        <i class="fas fa-tractor text-8xl text-green-300"></i>
+                    </div>
+                    <div class="md:col-span-2">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Story</h2>
+                        <div class="text-lg text-gray-700 leading-relaxed space-y-4"><p>Established in 2010, Sunrise Farm began with a simple dream: to create a place where animals could thrive in a natural, loving environment. We believe in sustainable farming practices and the ethical treatment of all our animals. From the smallest chick to the largest bull, each creature is a part of our family and is cared for with the utmost respect and dedication.</p><p>Our commitment extends beyond our gates. We strive to be a positive force in our community, providing fresh, high-quality products and an educational experience for all who visit. We invite you to explore our website and learn more about what makes Sunrise Farm a special place.</p></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -140,7 +148,7 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">Our Journey Through the Years</h2>
                 <div class="relative wrap overflow-hidden p-10 h-full">
-                    <div class="border-2 absolute border-opacity-20 border-green-700 h-full border" style="left: 50%"></div>
+                    <div class="absolute h-full" style="left: 50%; border-left: 3px solid; border-image: linear-gradient(to bottom, #4ade80, #16a34a) 1;"></div>
                     
                     <!-- 2010 -->
                     <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-element">
@@ -181,6 +189,17 @@
                             <p class="text-sm leading-snug tracking-wide text-gray-600">Our online store opens, making it easier for customers nationwide to order fresh farm products for delivery.</p>
                         </div>
                     </div>
+
+                    <!-- 2024 -->
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline timeline-element">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-12 h-12 rounded-full"><h1 class="mx-auto font-bold text-lg text-white">2024</h1></div>
+                        <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <h3 class="font-bold text-gray-800 text-xl">A Sweet Addition</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-600">We introduce our first apiary, welcoming honeybees to the farm and beginning our journey into sustainable beekeeping and delicious raw honey production.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -203,16 +222,28 @@
                         <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">Meet the Staff</h3>
                         <div class="space-y-8">
                             <!-- Staff Member: CEO -->
-                            <div class="flip-card h-48">
+                            <div class="flip-card h-40">
                                 <div class="flip-card-inner shadow-xl">
-                                    <div class="flip-card-front bg-white p-6 flex flex-col items-center justify-center text-center">
-                                        <img src="https://placehold.co/128x128/34d399/ffffff?text=L.Yusuf" alt="CEO and Owner" class="w-24 h-24 rounded-full shadow-lg border-4 border-green-200">
-                                        <h4 class="text-2xl font-semibold mt-2">LUQMAN YUSUF</h4>
-                                        <p class="text-green-600 font-medium">CEO & Owner</p>
+                                    <div class="flip-card-front bg-green-100 p-6 flex items-center gap-6">
+                                        <img src="https://placehold.co/100x100/34d399/ffffff?text=L.Yusuf" alt="CEO and Owner" class="w-24 h-24 rounded-full shadow-md">
+                                        <div><h4 class="text-xl font-semibold">LUQMAN YUSUF</h4><p class="text-green-600 font-medium">CEO & Owner</p></div>
                                     </div>
-                                    <div class="flip-card-back bg-green-600 text-white p-6 flex flex-col items-center justify-center text-center">
+                                    <div class="flip-card-back bg-green-600 text-white p-6 flex flex-col justify-center">
                                         <h4 class="text-2xl font-bold">LUQMAN YUSUF</h4>
                                         <p class="mt-2">Luqman's vision and passion for sustainable agriculture are the foundation of Sunrise Farm. He leads the team with a commitment to quality and ethical farming.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Staff Member: Co-owner -->
+                            <div class="flip-card h-40">
+                                <div class="flip-card-inner shadow-xl">
+                                    <div class="flip-card-front bg-white p-6 flex items-center gap-6">
+                                        <img src="https://placehold.co/100x100/8d6e63/ffffff?text=Y.Maina" alt="Yusuf Maina" class="w-24 h-24 rounded-full shadow-md">
+                                        <div><h4 class="text-xl font-semibold">YUSUF MAINA</h4><p class="text-green-600 font-medium">Co-owner & farm director</p></div>
+                                    </div>
+                                    <div class="flip-card-back bg-green-600 text-white p-6 flex flex-col justify-center">
+                                        <h4 class="text-xl font-bold">YUSUF MAINA</h4>
+                                        <p class="mt-2 text-sm">Yusuf manages the day-to-day farm operations, ensuring everything runs smoothly from pasture to product.</p>
                                     </div>
                                 </div>
                             </div>
@@ -329,27 +360,8 @@
     <script src="search.js"></script>
     <script src="modal.js"></script>
     <script src="header.js"></script>
+    <script src="dropdown.js"></script>
     <script src="main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Timeline Animation Logic
-            const timelineElements = document.querySelectorAll('.timeline-element');
-
-            if (timelineElements.length > 0) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target); // Stop observing after animation
-                        }
-                    });
-                }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
-
-                timelineElements.forEach(element => {
-                    observer.observe(element);
-                });
-            }
-        });
-    </script>
+    <script src="about.js"></script>
 </body>
 </html>

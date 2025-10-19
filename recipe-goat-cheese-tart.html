@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Bees - Sunrise Farm</title>
+    <title>Savory Goat Cheese and Herb Tart Recipe - Sunrise Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="modal.css">
@@ -15,6 +15,19 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
+        }
+        .recipe-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content li {
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
@@ -65,20 +78,66 @@
     <main>
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-8">Our Bees</h2>
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <img src="images/beess on honey comb.jpg" alt="Bees on a honeycomb" class="rounded-2xl shadow-lg w-full h-auto">
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+                    <div class="text-center mb-8">
+                        <a href="recipes.html" class="text-green-600 hover:text-green-800 font-semibold"><i class="fas fa-arrow-left mr-2"></i>Back to All Recipes</a>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Savory Goat Cheese and Herb Tart</h2>
+                        <p class="text-lg text-gray-600 mt-4">A sophisticated yet simple tart that showcases the creamy tang of fresh goat cheese and the bright flavors of garden herbs.</p>
+                    </div>
+
+                    <img src="images/goat cheese tart.jpg" alt="Savory Goat Cheese and Herb Tart" class="w-full h-auto object-cover rounded-2xl shadow-lg mb-8">
+
+                    <div class="flex flex-wrap justify-center gap-6 text-center mb-10">
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Prep Time</p>
+                            <p class="text-gray-600">20 mins</p>
                         </div>
-                        <div class="text-lg text-gray-700 leading-relaxed space-y-6">
-                            <p>The gentle hum of our honeybees is the heartbeat of the farm's ecosystem. These incredible pollinators are vital to the health of our crops and wildflowers. We maintain our hives with the utmost care, ensuring the colonies are strong and healthy.</p>
-                            <h3 class="text-2xl font-semibold text-gray-800 pt-4">Our Apiary:</h3>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><strong>Italian Honey Bees:</strong> We primarily raise Italian honey bees, known for their gentle nature and prolific honey production. They are excellent foragers and adapt well to our local climate.</li>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Cook Time</p>
+                            <p class="text-gray-600">35-40 mins</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Servings</p>
+                            <p class="text-gray-600">6-8</p>
+                        </div>
+                    </div>
+
+                    <div class="recipe-content grid md:grid-cols-3 gap-8 text-lg leading-relaxed">
+                        <div class="md:col-span-1">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Ingredients</h3>
+                            <h4 class="text-xl font-semibold mt-4 mb-2">For the Crust:</h4>
+                            <ul>
+                                <li>1 1/4 cups all-purpose flour</li>
+                                <li>1/2 cup cold unsalted butter, cubed</li>
+                                <li>1/2 teaspoon salt</li>
+                                <li>3-4 tablespoons ice water</li>
                             </ul>
-                            <p>Our approach to beekeeping is natural and treatment-free. We allow the bees to build their own comb and only harvest surplus honey, ensuring they have more than enough to sustain themselves through the winter. This results in pure, raw honey that is a true taste of our farm's diverse flora.</p>
+                            <h4 class="text-xl font-semibold mt-4 mb-2">For the Filling:</h4>
+                            <ul>
+                                <li>8 oz <a href="products.html#product-goat-cheese" class="text-green-600 font-bold hover:underline">Sunrise Farm Goat Cheese</a>, softened</li>
+                                <li>1/2 cup heavy cream</li>
+                                <li>1 large <a href="products.html#product-fresh-eggs" class="text-green-600 font-bold hover:underline">Sunrise Farm Fresh Egg</a></li>
+                                <li>2 tbsp fresh chives, chopped</li>
+                                <li>1 tbsp fresh thyme leaves</li>
+                                <li>Salt and freshly ground black pepper</li>
+                                <li>Optional: Drizzle of <a href="products.html#product-raw-honey" class="text-green-600 font-bold hover:underline">Sunrise Farm Raw Honey</a></li>
+                            </ul>
                         </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Instructions</h3>
+                            <ol>
+                                <li><strong>Prepare the Crust:</strong> In a food processor, pulse flour, salt, and cold butter until it resembles coarse crumbs. Add ice water, 1 tablespoon at a time, pulsing until the dough just comes together. Form into a disk, wrap in plastic, and chill for at least 30 minutes.</li>
+                                <li><strong>Pre-bake the Crust:</strong> Preheat oven to 375°F (190°C). Roll out the dough and fit it into a 9-inch tart pan with a removable bottom. Prick the bottom with a fork, line with parchment paper, and fill with pie weights. Bake for 15 minutes. Remove weights and parchment, then bake for another 5-7 minutes until lightly golden. Let cool slightly.</li>
+                                <li><strong>Make the Filling:</strong> In a medium bowl, whisk together the softened goat cheese, heavy cream, and egg until smooth. Stir in the fresh chives and thyme. Season with salt and pepper to taste.</li>
+                                <li><strong>Assemble and Bake:</strong> Pour the filling into the pre-baked crust and spread evenly. Bake for 20-25 minutes, or until the filling is set and the top is lightly golden.</li>
+                                <li><strong>Serve:</strong> Let the tart cool in the pan for about 10 minutes before removing the outer ring. Garnish with more fresh herbs and a drizzle of honey, if desired. Serve warm or at room temperature.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                        <h4 class="text-2xl font-bold text-yellow-800 mb-2">Tips & Variations</h4>
+                        <p class="text-yellow-900">For extra flavor, add some caramelized onions or sautéed mushrooms to the bottom of the crust before pouring in the filling. You can also experiment with different herbs like rosemary or dill.</p>
                     </div>
                 </div>
             </div>
@@ -127,9 +186,7 @@
         <div class="modal-content">
             <button id="legal-modal-close" class="modal-close-button">&times;</button>
             <h2 id="legal-modal-title" class="modal-title"></h2>
-            <div id="legal-modal-body" class="modal-body">
-                <!-- Content will be injected by JavaScript -->
-            </div>
+            <div id="legal-modal-body" class="modal-body"></div>
         </div>
     </div>
 

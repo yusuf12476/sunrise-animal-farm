@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Bees - Sunrise Farm</title>
+    <title>Recipes - Sunrise Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="modal.css">
@@ -63,22 +63,92 @@
 
     <!-- Main Content -->
     <main>
-        <section class="py-16">
+        <section id="recipes" class="py-16">
             <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-8">Our Bees</h2>
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <img src="images/beess on honey comb.jpg" alt="Bees on a honeycomb" class="rounded-2xl shadow-lg w-full h-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Farm-to-Table Recipes</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Get inspired with these delicious recipes featuring fresh ingredients straight from Sunrise Farm.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Recipe Card 1 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/goat cheese tart.jpg" alt="Goat Cheese Tart" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
                         </div>
-                        <div class="text-lg text-gray-700 leading-relaxed space-y-6">
-                            <p>The gentle hum of our honeybees is the heartbeat of the farm's ecosystem. These incredible pollinators are vital to the health of our crops and wildflowers. We maintain our hives with the utmost care, ensuring the colonies are strong and healthy.</p>
-                            <h3 class="text-2xl font-semibold text-gray-800 pt-4">Our Apiary:</h3>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><strong>Italian Honey Bees:</strong> We primarily raise Italian honey bees, known for their gentle nature and prolific honey production. They are excellent foragers and adapt well to our local climate.</li>
-                            </ul>
-                            <p>Our approach to beekeeping is natural and treatment-free. We allow the bees to build their own comb and only harvest surplus honey, ensuring they have more than enough to sustain themselves through the winter. This results in pure, raw honey that is a true taste of our farm's diverse flora.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Savory Goat Cheese and Herb Tart</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">A flaky, buttery crust filled with our creamy goat cheese and fresh herbs. Perfect for brunch or a light lunch.</p>
+                        <a href="recipe-goat-cheese-tart.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 2 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/roast-duck-everyday-delicious-1.jpg" alt="Roast Duck" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
                         </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Roasted Duck with Honey Glaze</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Impress your guests with this show-stopping roast duck, featuring a crispy skin and a sweet glaze made from our own raw honey.</p>
+                        <a href="recipe-roast-duck.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 3 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/Shakshuka-with-Feta-and-Chorizo-Featured.jpg" alt="Shakshuka with Duck Eggs" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Rich Duck Egg Shakshuka</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Take this classic Middle Eastern and North African dish to the next level with our rich, flavorful duck eggs poached in a spicy tomato sauce.</p>
+                        <a href="recipe-duck-egg-shakshuka.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 4 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/Best-Lamb-Chops-Recipe.jpg" alt="Honey Glazed Lamb Chops" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Honey Glazed Lamb Chops</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Tender, juicy lamb chops seared to perfection and finished with a sweet and savory glaze using our farm's raw honey.</p>
+                        <a href="recipe-lamb-chops.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 5 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/beef stew.jpg" alt="Classic Beef Stew" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Hearty Farmhouse Beef Stew</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">A comforting, slow-cooked stew featuring tender chunks of our grass-fed beef and root vegetables. The perfect meal for a chilly evening.</p>
+                        <a href="recipe-beef-stew.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 6 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/pan seared fish.jpg" alt="Pan-Seared Tilapia" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Pan-Seared Tilapia with Lemon</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">A quick and elegant dish. Our fresh tilapia fillets are pan-seared until golden and served with a simple lemon-butter sauce.</p>
+                        <a href="recipe-tilapia.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 7 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/mutton soup.jpg" alt="Mutton Soup" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Nourishing Mutton & Barley Soup</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">A rich and wholesome soup made with our flavorful mutton, hearty barley, and a medley of vegetables. A true farm classic.</p>
+                        <a href="recipe-mutton-soup.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <!-- Recipe Card 8 -->
+                    <div class="group bg-white p-6 rounded-3xl shadow-xl flex flex-col">
+                        <div class="overflow-hidden rounded-2xl mb-6">
+                            <img src="images/rabbit stew.jpg" alt="Rabbit Stew" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Simple & Rustic Rabbit Stew</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4 flex-grow">Discover the delicate flavor of rabbit in this simple, rustic stew with white wine, herbs, and mustard. A true taste of the countryside.</p>
+                        <a href="recipe-rabbit-stew.html" class="font-semibold text-green-600 hover:text-green-700 mt-auto">View Recipe <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
             </div>
@@ -127,9 +197,7 @@
         <div class="modal-content">
             <button id="legal-modal-close" class="modal-close-button">&times;</button>
             <h2 id="legal-modal-title" class="modal-title"></h2>
-            <div id="legal-modal-body" class="modal-body">
-                <!-- Content will be injected by JavaScript -->
-            </div>
+            <div id="legal-modal-body" class="modal-body"></div>
         </div>
     </div>
 

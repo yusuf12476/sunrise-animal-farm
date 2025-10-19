@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Bees - Sunrise Farm</title>
+    <title>Hearty Farmhouse Beef Stew Recipe - Sunrise Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="modal.css">
@@ -15,6 +15,19 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
+        }
+        .recipe-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content li {
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
@@ -65,20 +78,67 @@
     <main>
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-8">Our Bees</h2>
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <img src="images/beess on honey comb.jpg" alt="Bees on a honeycomb" class="rounded-2xl shadow-lg w-full h-auto">
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+                    <div class="text-center mb-8">
+                        <a href="recipes.html" class="text-green-600 hover:text-green-800 font-semibold"><i class="fas fa-arrow-left mr-2"></i>Back to All Recipes</a>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Hearty Farmhouse Beef Stew</h2>
+                        <p class="text-lg text-gray-600 mt-4">A comforting, slow-cooked stew featuring tender chunks of our grass-fed beef and root vegetables. The perfect meal for a chilly evening.</p>
+                    </div>
+
+                    <img src="images/beef stew.jpg" alt="Hearty Farmhouse Beef Stew" class="w-full h-auto object-cover rounded-2xl shadow-lg mb-8">
+
+                    <div class="flex flex-wrap justify-center gap-6 text-center mb-10">
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Prep Time</p>
+                            <p class="text-gray-600">25 mins</p>
                         </div>
-                        <div class="text-lg text-gray-700 leading-relaxed space-y-6">
-                            <p>The gentle hum of our honeybees is the heartbeat of the farm's ecosystem. These incredible pollinators are vital to the health of our crops and wildflowers. We maintain our hives with the utmost care, ensuring the colonies are strong and healthy.</p>
-                            <h3 class="text-2xl font-semibold text-gray-800 pt-4">Our Apiary:</h3>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><strong>Italian Honey Bees:</strong> We primarily raise Italian honey bees, known for their gentle nature and prolific honey production. They are excellent foragers and adapt well to our local climate.</li>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Cook Time</p>
+                            <p class="text-gray-600">2-3 hours</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Servings</p>
+                            <p class="text-gray-600">6-8</p>
+                        </div>
+                    </div>
+
+                    <div class="recipe-content grid md:grid-cols-3 gap-8 text-lg leading-relaxed">
+                        <div class="md:col-span-1">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Ingredients</h3>
+                            <ul>
+                                <li>2 lbs <a href="products.html#product-beef" class="text-green-600 font-bold hover:underline">Sunrise Farm Beef</a>, cut into 1-inch cubes</li>
+                                <li>1/4 cup all-purpose flour</li>
+                                <li>1 tsp salt</li>
+                                <li>1/2 tsp black pepper</li>
+                                <li>2 tbsp olive oil</li>
+                                <li>1 large onion, chopped</li>
+                                <li>2 carrots, sliced</li>
+                                <li>2 celery stalks, chopped</li>
+                                <li>4 cloves garlic, minced</li>
+                                <li>1 cup dry red wine (optional)</li>
+                                <li>4 cups beef broth</li>
+                                <li>1 tbsp tomato paste</li>
+                                <li>1 tsp dried thyme</li>
+                                <li>2 bay leaves</li>
+                                <li>1.5 lbs potatoes, peeled and cubed</li>
                             </ul>
-                            <p>Our approach to beekeeping is natural and treatment-free. We allow the bees to build their own comb and only harvest surplus honey, ensuring they have more than enough to sustain themselves through the winter. This results in pure, raw honey that is a true taste of our farm's diverse flora.</p>
                         </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Instructions</h3>
+                            <ol>
+                                <li><strong>Prepare Beef:</strong> In a bowl, toss the beef cubes with flour, salt, and pepper until evenly coated.</li>
+                                <li><strong>Brown the Beef:</strong> Heat olive oil in a large Dutch oven or heavy-bottomed pot over medium-high heat. Add the beef in batches, being careful not to overcrowd the pot. Brown on all sides. Remove the beef and set aside.</li>
+                                <li><strong>Sauté Vegetables:</strong> In the same pot, add the onion, carrots, and celery. Cook until softened, about 5-7 minutes. Add the garlic and cook for another minute until fragrant.</li>
+                                <li><strong>Deglaze and Simmer:</strong> If using, pour in the red wine to deglaze the pot, scraping up any browned bits from the bottom. Bring to a simmer and cook for a few minutes. Stir in the beef broth, tomato paste, thyme, and bay leaves.</li>
+                                <li><strong>Slow Cook:</strong> Return the browned beef to the pot. Bring the stew to a simmer, then reduce the heat to low, cover, and cook for 1.5 hours, stirring occasionally.</li>
+                                <li><strong>Add Potatoes & Finish:</strong> Add the cubed potatoes to the stew. Cover and continue to cook for another 45-60 minutes, or until the beef and potatoes are tender. Remove bay leaves before serving.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                        <h4 class="text-2xl font-bold text-yellow-800 mb-2">Chef's Tip</h4>
+                        <p class="text-yellow-900">For the best flavor, don't skip browning the beef. This step creates a deep, rich base for the stew. The stew is even better the next day as the flavors have more time to meld together.</p>
                     </div>
                 </div>
             </div>
@@ -127,9 +187,7 @@
         <div class="modal-content">
             <button id="legal-modal-close" class="modal-close-button">&times;</button>
             <h2 id="legal-modal-title" class="modal-title"></h2>
-            <div id="legal-modal-body" class="modal-body">
-                <!-- Content will be injected by JavaScript -->
-            </div>
+            <div id="legal-modal-body" class="modal-body"></div>
         </div>
     </div>
 

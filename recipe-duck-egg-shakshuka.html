@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Bees - Sunrise Farm</title>
+    <title>Rich Duck Egg Shakshuka Recipe - Sunrise Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="modal.css">
@@ -15,6 +15,19 @@
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
+        }
+        .recipe-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .recipe-content li {
+            margin-bottom: 0.75rem;
         }
     </style>
 </head>
@@ -65,20 +78,65 @@
     <main>
         <section class="py-16">
             <div class="container mx-auto px-4">
-                <div class="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-8">Our Bees</h2>
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <img src="images/beess on honey comb.jpg" alt="Bees on a honeycomb" class="rounded-2xl shadow-lg w-full h-auto">
+                <div class="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl">
+                    <div class="text-center mb-8">
+                        <a href="recipes.html" class="text-green-600 hover:text-green-800 font-semibold"><i class="fas fa-arrow-left mr-2"></i>Back to All Recipes</a>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-4">Rich Duck Egg Shakshuka</h2>
+                        <p class="text-lg text-gray-600 mt-4">A hearty, flavorful dish where rich duck eggs are gently poached in a spicy, aromatic tomato and pepper sauce. Perfect for any meal of the day.</p>
+                    </div>
+
+                    <img src="images/Shakshuka-with-Feta-and-Chorizo-Featured.jpg" alt="Rich Duck Egg Shakshuka" class="w-full h-auto object-cover rounded-2xl shadow-lg mb-8">
+
+                    <div class="flex flex-wrap justify-center gap-6 text-center mb-10">
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Prep Time</p>
+                            <p class="text-gray-600">15 mins</p>
                         </div>
-                        <div class="text-lg text-gray-700 leading-relaxed space-y-6">
-                            <p>The gentle hum of our honeybees is the heartbeat of the farm's ecosystem. These incredible pollinators are vital to the health of our crops and wildflowers. We maintain our hives with the utmost care, ensuring the colonies are strong and healthy.</p>
-                            <h3 class="text-2xl font-semibold text-gray-800 pt-4">Our Apiary:</h3>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><strong>Italian Honey Bees:</strong> We primarily raise Italian honey bees, known for their gentle nature and prolific honey production. They are excellent foragers and adapt well to our local climate.</li>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Cook Time</p>
+                            <p class="text-gray-600">25-30 mins</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-xl">
+                            <p class="font-bold text-gray-800">Servings</p>
+                            <p class="text-gray-600">2-4</p>
+                        </div>
+                    </div>
+
+                    <div class="recipe-content grid md:grid-cols-3 gap-8 text-lg leading-relaxed">
+                        <div class="md:col-span-1">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Ingredients</h3>
+                            <ul>
+                                <li>1 tbsp olive oil</li>
+                                <li>1 large onion, chopped</li>
+                                <li>1 red bell pepper, sliced</li>
+                                <li>3 cloves garlic, minced</li>
+                                <li>1 tsp cumin</li>
+                                <li>1 tsp smoked paprika</li>
+                                <li>1/4 tsp cayenne pepper (or to taste)</li>
+                                <li>1 (28-ounce) can crushed tomatoes</li>
+                                <li>4 <a href="products.html#product-duck-eggs" class="text-green-600 font-bold hover:underline">Sunrise Farm Duck Eggs</a></li>
+                                <li>Salt and freshly ground black pepper</li>
+                                <li>Fresh cilantro or parsley, for garnish</li>
+                                <li>Crumbled <a href="products.html#product-goat-cheese" class="text-green-600 font-bold hover:underline">Goat Cheese</a> (optional)</li>
+                                <li>Crusty bread, for serving</li>
                             </ul>
-                            <p>Our approach to beekeeping is natural and treatment-free. We allow the bees to build their own comb and only harvest surplus honey, ensuring they have more than enough to sustain themselves through the winter. This results in pure, raw honey that is a true taste of our farm's diverse flora.</p>
                         </div>
+                        <div class="md:col-span-2">
+                            <h3 class="text-3xl font-bold text-gray-800 mb-4 border-b-2 border-green-200 pb-2">Instructions</h3>
+                            <ol>
+                                <li><strong>Sauté Aromatics:</strong> Heat olive oil in a large skillet or pan over medium heat. Add the chopped onion and bell pepper and cook until softened, about 5-7 minutes. Add the minced garlic and cook for another minute until fragrant.</li>
+                                <li><strong>Add Spices and Tomatoes:</strong> Stir in the cumin, smoked paprika, and cayenne pepper. Cook for 1 minute until the spices are aromatic. Pour in the crushed tomatoes and season with salt and pepper. Bring to a simmer and let it cook for about 10 minutes, allowing the sauce to thicken slightly.</li>
+                                <li><strong>Make Wells for Eggs:</strong> Using the back of a spoon, create four small wells in the tomato sauce.</li>
+                                <li><strong>Add Eggs:</strong> Carefully crack one duck egg into each well. The richness of the duck eggs will make the dish extra decadent.</li>
+                                <li><strong>Cook Eggs:</strong> Reduce the heat to low, cover the skillet, and cook for 5-8 minutes, or until the egg whites are set but the yolks are still runny.</li>
+                                <li><strong>Garnish and Serve:</strong> Remove from heat. Garnish generously with fresh cilantro or parsley and optional crumbled goat cheese. Serve immediately with warm, crusty bread for dipping.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-6 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                        <h4 class="text-2xl font-bold text-yellow-800 mb-2">Why Duck Eggs?</h4>
+                        <p class="text-yellow-900">Duck eggs have larger, richer yolks and a higher fat content than chicken eggs, which makes this shakshuka incredibly creamy and satisfying. They are a fantastic way to elevate this already delicious dish!</p>
                     </div>
                 </div>
             </div>
@@ -127,9 +185,7 @@
         <div class="modal-content">
             <button id="legal-modal-close" class="modal-close-button">&times;</button>
             <h2 id="legal-modal-title" class="modal-title"></h2>
-            <div id="legal-modal-body" class="modal-body">
-                <!-- Content will be injected by JavaScript -->
-            </div>
+            <div id="legal-modal-body" class="modal-body"></div>
         </div>
     </div>
 

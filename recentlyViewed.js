@@ -1,21 +1,18 @@
-const RECENTLY_VIEWED_KEY = 'recentlyViewed';
+const RECENTLY_VIEWED_KEY = 'sunriseFarmRecentlyViewed';
 const MAX_RECENTLY_VIEWED = 4; // Show up to 4 recently viewed items
 
 /**
  * Adds a product to the recently viewed list in localStorage.
  * It avoids duplicates and keeps the list at a maximum size.
  * @param {object} product - The product object to add.
- * @param {string} product.name - The name of the product.
- * @param {number} product.price - The price of the product.
- * @param {string} product.image - The source URL for the product image.
- * @param {string} product.pageUrl - The URL of the page the product is on.
- * @param {string} product.productId - A unique ID for the product.
  */
 function addRecentlyViewedItem(product) {
+    if (!product || !product.id) return;
+
     let recentlyViewed = JSON.parse(localStorage.getItem(RECENTLY_VIEWED_KEY)) || [];
 
     // Remove the item if it already exists to move it to the front
-    recentlyViewed = recentlyViewed.filter(item => item.name !== product.name);
+    recentlyViewed = recentlyViewed.filter(item => item.id !== product.id);
 
     // Add the new item to the beginning of the array
     recentlyViewed.unshift(product);
@@ -46,18 +43,18 @@ function renderRecentlyViewed() {
 
     if (section) section.classList.remove('hidden');
 
-    container.innerHTML = recentlyViewed.map(item => `
-        <div class="product-card bg-white rounded-3xl shadow-xl flex flex-col overflow-hidden group">
+    // We can reuse the createProductCardHTML function if it's globally available,
+    // but to keep this modular, we'll define a simple card here.
+    container.innerHTML = recentlyViewed.map(product => `
+        <div class="group bg-white rounded-3xl shadow-xl flex flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-2">
             <div class="relative overflow-hidden">
-                <a href="${item.pageUrl}#product-${item.productId}">
-                    <img src="${item.image}" alt="${item.name}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
+                <a href="products.html#product-${product.id}">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110">
                 </a>
             </div>
             <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-xl font-semibold mb-2">${item.name}</h3>
-                <div class="mt-auto">
-                    <span class="text-xl font-bold text-gray-800">Ksh ${item.price.toFixed(2)}</span>
-                </div>
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">${product.name}</h3>
+                <p class="text-gray-600 text-sm mb-4 flex-grow">${product.description}</p>
             </div>
         </div>
     `).join('');
