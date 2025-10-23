@@ -20,6 +20,28 @@ function initializeMain() {
         });
     }
 
+    // Splash Screen
+    const splashScreen = document.getElementById('splash-screen');
+    if (splashScreen) {
+        // Check if the splash screen has been seen in this session
+        if (sessionStorage.getItem('splashSeen') === 'true') {
+            // If seen, hide it immediately without animation
+            splashScreen.style.display = 'none';
+        } else {
+            // If not seen, show it and then fade it out on window load
+            window.addEventListener('load', () => {
+                // Start the fade-out
+                splashScreen.classList.add('opacity-0');
+
+                // Remove from DOM after transition
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                }, 1000); // Matches transition duration
+            });
+            // Set the flag in sessionStorage so it doesn't show again on next page navigation
+            sessionStorage.setItem('splashSeen', 'true');
+        }
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initializeMain);

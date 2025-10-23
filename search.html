@@ -16,6 +16,12 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Lora', serif;
         }
+        #splash-screen .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #4ade80;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
         .loader {
             border: 8px solid #f3f3f3; /* Light grey */
             border-top: 8px solid #4ade80; /* green-400 */
@@ -32,6 +38,12 @@
     </style>
 </head>
 <body class="bg-green-50 text-gray-800">
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 bg-green-50 z-[100] flex flex-col items-center justify-center transition-opacity duration-1000 ease-out">
+        <img src="images/Gemini_Generated_Image_fp52wsfp52wsfp52.png" alt="Sunrise Farm Logo" class="h-48 w-48 mb-4 animate-pulse">
+        <div class="loader"></div>
+    </div>
 
     <!-- Header Section -->
     <header class="bg-green-600 text-white shadow-lg sticky top-0 z-50">
